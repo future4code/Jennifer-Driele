@@ -31,15 +31,25 @@ console.log(a, b, c)
  /* O undefined aparece quando não declaramos o valor da variavel*/
 
  const nome= "Jennifer"
- console.log(nome);
+ console.log(typeof("Jennifer"))
  let idade= "32"
- console.log(idade)
+ console.log(typeof(32))
 
- /*Quando declaramos as variaveis o console imprime seus recepctivos valores , tipo string e numbers. */
+ 
+let primeiroNome=prompt("Qual o seu nome?")
+console.log (primeiroNome)
+let idadeAtual=prompt("Qual a sua idade?")
+console.log (idadeAtual)
+console.log ("Olá Jennifer você tem 32 anos")
 
- console.log ("Olá Jennifer você tem 32 anos")
+let Nome1="Jennifer"
+console.log(typeof("Jennifer"))
+let idade1= "32"
+console.log(typeof(32))
 
-/*Exercicio 2*/
+/*São os valores que as variaveis  assumem tipos strings ,numbers)
+
+ /*Exercicio 2*/
 
 console.log ("Qual a sua cidade?")
 let cidade ="Piracicaba"
