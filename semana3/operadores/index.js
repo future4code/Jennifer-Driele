@@ -41,7 +41,7 @@ console.log (diferenca)
 
  let usuario2=prompt("Insira um número par?")
 
- const valorA ="25"
+ const valorA ="30"
  let resultado = "2"
  let restoDaDivisao =Number(valorA) %Number(resultado)
  console.log (restoDaDivisao)
