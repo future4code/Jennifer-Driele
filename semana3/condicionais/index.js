@@ -78,30 +78,102 @@ igual a 0) .Quando o usuariro digita um número impar o resultado (Não passou n
     //Exercício 7
 
     const filme =prompt("Qual o gênero de filme que vão assistir?")
-    const ingresso =prompt("Qual o valor do ingresso?")
-   const valorMenor = 15
- 
+    const ingresso = Number(prompt("Qual o valor do ingresso?"))
+    
+    
 
-    if(valorMenor <= 15 ){ 
+    switch(ingresso){
+        case "15": 
+           
     console.log("Bom Filme")
-    }else{
-        console.log("Escolha outro filme") 
+    break;
+   
+    default: 
+        console.log("Escolha outro Filme")
+        break;
     }
+    //Desafio 1
 
+const doces = prompt("Qual snack que você que comprar , Pipoca , Chocolate,Doces, etc?").toUpperCase()
+let gulosemas ="Chocolate"
+switch(doces){
+    case "SNACK":
+        console.log("Bom Filme !")
+       console.log("... com " + gulosemas) 
+    break;
 
-    //Desafio1
-    Const
-
+  
+  default: 
+  console.log("Escolha outro  SNACK")
+  break; 
 
 
  
+}
 
-   //Desafio 2
-   let categoria1FI = 1980
-    if(categoria === 1) {
-            preco = categoria1FI
-        } else if(categoria === 2){
-            preco = categoria2FI
+   
+  //Desafio 2
+
+  let nome=prompt("Qual é seu nome Completo")
+  let tipoDeJogo = prompt("O jogo é do tipo Nacional ou Internacional?").toUpperCase()
+  let etapa=prompt("Qual é a etapa do jogo?")
+  let categoria =Number( prompt("Qual é a categoria do jogo"))
+  let ingresso1 =Number(prompt("Quantos ingressos deseja comprar?"))
+  let valorDoSf1 = 1980 
+  let ingressos = 5
+  let nomeCompleto =" Vitor Silva"
+  let tipoDoJogo1 = "Nacional"
+  let etapaDoJogo = "Semifinais"
+  let categorias = 1
+
+ 
+ console.log("----Dados da Compra----")
+ console.log("Nome do cliente: " + nomeCompleto)
+ console.log("Tipo do Jogo: " + tipoDoJogo1)
+ console.log("Etapa do Jogo: " + etapaDoJogo)  
+ console.log("Categoria:" + categoria)
+ 
+ console.log("Quantidade de ingressos:"  +  ingressos  +  "Ingressos")
+ console.log("---Valores---")
+ console.log("Valor do ingresso:" ,"R$", + valorDoSf1)
+
+
+ if(categorias === 1) {
+             preco = valorDoSf1
+ console.log("Valor Total:" ,"R$", + (valorDoSf1 * ingressos))
+}else{
+    console.log("Dados incorretos")
+}
 
 
    
+
+let nome1=prompt("Qual é seu nome Completo")
+let tipoDeJogo1 = prompt("O jogo é do tipo Nacional ou Internacional?").toUpperCase()
+let etapa1=prompt("Qual é a etapa do jogo?")
+let categoria1 =Number( prompt("Qual é a categoria do jogo"))
+let ingresso2 =Number(prompt("Quantos ingressos deseja comprar?"))
+let valorDoSf2 = 321.95 
+let ingressos2 = 2
+let nomeCompleto2 =" Mario Vinicius"
+let tipoDoJogo2 = "Internacional"
+let etapaDoJogo2 = "Final"
+let categorias2 = 2
+
+console.log("----Dados da Compra----")
+console.log("Nome do cliente: " + nomeCompleto2)
+console.log("Tipo do Jogo: " + tipoDoJogo2)
+console.log("Etapa do Jogo: " + etapaDoJogo2)
+console.log("Categoria:" + categorias2)
+
+console.log("Quantidade de ingressos:"  +  ingressos2  +  "Ingressos")
+console.log("---Valores---")
+console.log("Valor do ingresso:" ,"U$", + valorDoSf2)
+
+if(categorias2 === 2 ) {
+           preco = valorDoSf2
+console.log("Valor Total:","U$",  + ( 321.95 *ingressos2))
+}else{
+  console.log("Dados incorretos")
+}
+
