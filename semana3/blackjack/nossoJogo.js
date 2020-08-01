@@ -13,49 +13,31 @@
 
  //Montando o Jogo
 
- //Parte 1 ,2,3 e 4
-
- console.log("Bem Vindo ao jogo de BlackJack !")
- let rodada= confirm("Quer iniciar uma nova rodada?")
- let rodada2
-     if(rodada === true){
-       rodada2="Você pressionou ok!"
-     }else{
-        rodada2="Você preciossou Cancelar!" 
-        console.log("O jogo acabou")
-     }  
-     
-  //Parte 5 
-  
-   const cartasDoUsuario = comprarCarta()
-  console.log(cartasDoUsuario.texto) 
-
-  const cartasDoComputador = comprarCarta()
-  console.log(cartasDoComputador.valor)
-
-  //Parte 6 e 7
-   const usuario ="J♥️  10♥️"
-   const computador ="J♥️  10♥️"
-   const pontosDoUsuario = 20
-   const pontosDoComputador = 20
 
 
+// console.log("Bem Vindo ao jogo de BlackJack !")
+// if(confirm("Quer iniciar uma nova rodada?")){
+//    const carta1 = comprarCarta()
+//    const carta2 = comprarCarta()
+//    const carta3 = comprarCarta()
+//    const carta4 = comprarCarta()
+//    let resultadoUsuario= carta1.valor + carta2.valor
+//    let resultadoComputador = carta3.valor + carta4.valor
+//    console.log("Usuario - Cartas:" , carta1.texto , carta2.texto,"- Pontuação  " , resultadoUsuario)
+//        console.log("Computador - Cartas:" , carta3.texto , carta3.texto,"- Pontuação  " , resultadoComputador)
+//        if(resultadoUsuario > resultadoComputador){
+//              console.log("O usuario ganhou!")
+//        }else if(resultadoUsuario < resultadoComputador){
+//           console.log("O computador ganhou!")
+//        }else{
+//           console.log("Empatou!")
+//        }
+// } else{
+//    console.log("O jogo acabou")
+// }  
+
+       
 
   
-  
-  
-  
-  
-  
-  
-  
-   if(pontosDoUsuario === pontosDoComputador){
-       console.log("Empate!")
-  }else if( pontosDoUsuario > pontosDoComputador) {
-       console.log("O usuario ganhou!")
-  }else if(pontosDoUsuario < pontosDoComputador){
-       console.log("O computador ganhou!")
-  }else{
-      console.log(erro)
-  }
+   
 
