@@ -1,35 +1,58 @@
-arrayDespesas=[]
+let arrayDespesas=[]
 
-//adicionar as despesas num array de objetos
-
-
-
-//função adicionar despesas na lista
 function cadastroDespesas(){
-    const valorDespesa = document.getElementById("valor").value
-    const tipoDespesa=document.getElementById("tipo").value
-    const descricaoDespesa = document.getElementById("descricao").value
-    const despesas =document.getElementById("")
-    if(valorDespesa .value !=="" && valor.value !== ""&&  descricaoDespesa.value != ""){
-        despesas.innerHTML += `<p>${valorDespesa.value}</p><p>${tipoDespesa.value}</p><p>${descricaoDespesa.value}</p>`
-         
+    const inputValor = document.getElementById("valor-despesa")
+    const inputTipo = document.getElementById("tipo-despesa")
+    const inputDescricao = document.getElementById("descricao-despesa")
+     
+ if(inputValor.value !==""  && inputTipo.value !== ""&&  inputDescricao.value !== ""){
+     const novaDespesa ={
+        valor:(inputValor.value),
+        tipo: inputTipo.value,
+        descricao: inputDescricao.value
+    
+    }
+     console.log(novaDespesa)
+     
+     arrayDespesas.push(novaDespesa)
+     console.log(arrayDespesas)
+     
+     arrayDespesas.forEach(adicionarDespesa)
+     
+     inputValor.value =""
+     inputTipo.value =""
+     inputDescricao.value =""
+    
+    }else{
 
     alert("Verifique suas informações")
-}else{
-    const novaDespesa ={
-        valor:valorDespesa,
-        tipo:tipoDespesa,
-        descricao: descricaoDespesa
-    }
-    arrayDespesas.push(novaDespesa)
-        valorDespesa.value =""
-        tipoDespesa.valeu =""
-        descricaoDespesa.value =""
-        }
+    
+   }
 
 }
-// Obejeto da 1 seção
 
+
+const adicionarDespesa = (despesa ,index,array) =>{
+    addDespesa.innerHTML += `<li>${despesa.valor}</li><li>${despesa.tipo}</li><li>${despesa.descricao}</li> <br>`
+}
+
+const addDespesa = document.getElementById("lista-de-depesas-detalhada") 
+
+function filtrarDespesa(){
+    const valorMin =document.getElementById("valor-minimo").value
+    const valorMax =document.getElementById("valor-maximo").value
+    console.log(valorMax,valorMin)
+
+    sectionDespesa.innerHTML=""
+    const filtroDeValores =arrayDespesas.filter((despesa) =>{
+        return Number(dispesa.valor) >= valorMin && Number(despesa.valor) <= valorMax
+    })
     
-    
+    sectionDespesa.innerHTML +=`<li>Valor:${filtroDeValores.valor}</li>
+    <li>Descriçao: ${filtroDeValores.descricao}</li>
+    <li>Tipo de Despesa:${filtroDeValores.tipoDespesa}</li>`
+    console.log(filtroDeValores)
+    event.preventDefault()
+
+}
 
