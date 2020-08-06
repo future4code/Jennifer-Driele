@@ -1,0 +1,43 @@
+#formulario {
+    border: 1px dotted black;
+    padding: 10px;
+    width: 30vw;
+    margin: 10px auto;
+    display: flex;
+    display:inline-block;
+    align-items: flex-start;
+    
+}
+#formulario1 {
+    border: 1px dotted black;
+    padding: 20px;
+    width: 20vw;
+    margin: 10px auto;
+    display: flex;
+    display:inline-block;
+    align-items: flex-start;
+    
+}
+#formulario2 {
+    border: 1px dotted black;
+    padding: 50px;
+    width: 20vw;
+    margin: 10px auto;
+    display: flex;
+    display:inline-block;
+    align-items: flex-start;
+    
+}
+
+
+
+
+
+button {
+    
+    width: 100px;
+    margin: 0 auto;
+    padding: 2px;
+    border-radius: 5px;
+    border: 1px solid rgb(77, 77, 77);
+}
