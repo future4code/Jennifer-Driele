@@ -22,11 +22,7 @@ arrayPost.push(post)
  console.log(post)
  console.log(arrayPost)
 
-  // limpar os campos
-  tituloPost.value = ""
-  autorPost.value = ""
-  conteudoPost.value = ""
-
+  
 //post na pagiana html
 
 function apertarBotao(){
@@ -43,4 +39,11 @@ function apertarBotao(){
 
 function addPost(event){
     apertarBotao()
+
+// limpar os campos
+   tituloPost.value = ""
+   autorPost.value = ""
+   conteudoPost.value = ""
+   imagemPost.value = ""
+  
 }
