@@ -24,5 +24,76 @@
 
 //While, for , for of
 
-// let ListaDeNomes
+//  let listaDeNomes=["Maria","Lucas", "Teresa"];
+// for(let i = 0; i < listaDeNomes.length; i++){
+//     let mensagem ="Boas vindas," + listaDeNomes[i] +"!";
+//     console.log(mensagem)
+// } 
 
+
+//Exercício 2
+
+ //a - false
+ //b- true
+ // c- true
+ //d - true
+ //e- true
+
+ //Exercício 3
+
+
+ // Exercício 4
+
+ function ladoDosTriangulos(a,b,c){
+     let triangulo
+     if(triangulo === a){
+         console.log(Equilatero)
+     }else if(triangulo =! b){
+         console.log (Isosceles)
+     }else if (triangulo != c){
+         console.log(Escaleno)
+     }else{
+         console.log("Incorreto")
+     }
+
+
+ }
+
+ //Exercíco 5
+
+ const numeros = [ 15,30 ]
+ let array1 = 0;
+ let array2 = 15 % 30
+  for(let numero of numeros){
+      if(numero >  array1){
+          array1 = numero
+         
+  }
+  if (numero % array2){
+      array2 = numero
+
+  }
+}
+console.log(`O maior é:${array1}  15 não é divisivel por 30  é divisivel por 15 ,A diferença entre ele é ${array2}` )
+
+
+// //Funções
+
+// //Exercício 1
+
+//   function numbers (){ 
+//  const array =[5,10,12,15,30,32,45]
+//   array.splice( 1,4)
+//   console.log(array)
+
+//   }
+//   numbers()
+
+
+// // Exercício 2
+
+//  let semParar= () =>{ 
+//       alert('Hello Future4');
+    
+//      }
+//      semParar()
