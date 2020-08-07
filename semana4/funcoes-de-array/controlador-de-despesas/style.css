@@ -1,0 +1,22 @@
+body{
+    display:grid;
+   grid-template-columns:1fr 1fr 1fr;
+
+}
+
+#formulario {
+    border: 1px solid black;
+    padding: 10px;
+    width: 30vw;
+    margin: 10px auto;
+    
+}
+button {
+    
+    width: 100px;
+    margin:0 auto;
+    padding: 2px;
+    border-radius: 5px;
+    border: 1px solid rgb(77, 77, 77);
+    margin-top: 15px;
+}
