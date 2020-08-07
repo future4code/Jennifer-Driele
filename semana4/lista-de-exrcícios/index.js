@@ -81,19 +81,19 @@ console.log(`O maior é:${array1}  15 não é divisivel por 30  é divisivel por
 
 // //Exercício 1
 
-//   function numbers (){ 
-//  const array =[5,10,12,15,30,32,45]
-//   array.splice( 1,4)
-//   console.log(array)
+   function numbers (){ 
+  const array =[5,10,12,15,30,32,45]
+   array.splice( 1,4)
+  console.log(array)
 
-//   }
-//   numbers()
+   }
+   numbers()
 
 
 // // Exercício 2
 
-//  let semParar= () =>{ 
-//       alert('Hello Future4');
+  let semParar= () =>{ 
+       alert('Hello Future4');
     
-//      }
-//      semParar()
+      }
+      semParar()
