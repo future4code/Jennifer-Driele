@@ -97,3 +97,23 @@ console.log(`O maior é:${array1}  15 não é divisivel por 30  é divisivel por
     
       }
       semParar()
+
+
+      //Objetos
+
+      //Exercício1
+      //array : permite que guardemos mais informação ao mesmo tempo
+      //Object: é uma estrutura que representa dados mais complexos de uma maneira mais organiza
+
+
+      //Exercício 2
+
+      //Exercíco 3
+      const nomeFilme ={
+          titulo: "Jogos Vorazes",
+          ano :"2008",
+          diretor : "Suzanne Marie Collins",
+          atores:["Jennifer Lawrence, Josh Hutcherson"]
+      }
+      console.log(Venha assistir)
+
