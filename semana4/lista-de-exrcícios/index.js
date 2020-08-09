@@ -70,14 +70,14 @@
 // const numbers = (a,b) =>{
 //     if ( a === b){  // caso sejam iguais,para a função)
 //         console.log("Os dois números são iguais")
-//         console.log("A diferença entre eles é 0")
+//         console.log("A diferença entre eles é 15")
 //     }else if(a > b){
-//         console.log (`O maior é ${a}`)
+//         console.log (`O maior é:${a}`)
 //     }else{
-//         console.log(`O maior é: ${b}`)
+//         console.log(`O maior é:${b}`)
 // }
 // numbers(15,30)
-    
+
 
                  //Funções
 
@@ -116,9 +116,6 @@
 
 //array : permite que guardemos mais informação ao mesmo tempo
 //Object: é uma estrutura que representa dados mais complexos de uma maneira mais organiza
-
-
- //Exercício 2
 
 //Exercíco 3
 
