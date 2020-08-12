@@ -14,7 +14,7 @@ class Post extends React.Component {
     numeroCurtidas: 0,
     comentando: false,
     numeroComentarios: 0,
-    share:""
+    
   }
 
   onClickCurtida = () => {
