@@ -13,7 +13,7 @@ class Post extends React.Component {
     curtido:false ,
     numeroCurtidas: 0,
     comentando: false,
-    numeroComentarios: 0,
+    numeroComentarios: 0
     
   }
 
@@ -77,7 +77,7 @@ class Post extends React.Component {
           onClickIcone={this.onClickComentario}
           valorContador={this.state.numeroComentarios}
         />
-        
+  
       </div>
       {componenteComentario}
     </div>
