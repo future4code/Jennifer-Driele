@@ -1,5 +1,5 @@
 .post-container {
-    border: 1px solid gray;
+    border: 2px solid  #660033;
     width: 300px;
     margin-bottom: 10px;
    
@@ -13,12 +13,25 @@
     padding-left: 10px;
 }
 
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
 .post-footer {
     height: 40px;
     display: flex;
     align-items: center;
     padding: 0 10px;
     justify-content: space-between;
+}
+
+.post-footer div {
+    margin-right: 1em;
+}
+
+.share-icon {
+    margin-right: 1em;
 }
 
 .user-photo {
