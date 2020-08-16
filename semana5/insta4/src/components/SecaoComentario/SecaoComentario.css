@@ -8,3 +8,10 @@
     width: 100%;
     margin-right: 5px;
 }
+
+button {
+    background: #660033;
+    color: white;
+    border: none;
+    border-radius: 2px;
+}

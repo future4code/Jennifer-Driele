@@ -6,6 +6,11 @@ import {IconeComContador} from '../IconeComContador/IconeComContador'
 import iconeCoracaoBranco from '../../img/favorite-white.svg'
 import iconeCoracaoPreto from '../../img/favorite.svg'
 import iconeComentario from '../../img/comment_icon.svg'
+import iconeBookmarkBranco from '../../img/bookmarkBlack.svg'
+import iconeBookmarkPreto from '../../img/bookmark.svg'
+import iconeCompartilhar from '../../img/share.svg'
+
+import {SecaoCompartilhar} from '../SecaoCompartilhar/SecaoCompartilhar'
 import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
 
 class Post extends React.Component {
@@ -13,7 +18,9 @@ class Post extends React.Component {
     curtido:false ,
     numeroCurtidas: 0,
     comentando: false,
-    numeroComentarios: 0
+    numeroComentarios: 0,
+    salvo:true,
+    compartilhar:false
     
   }
 
@@ -25,6 +32,12 @@ class Post extends React.Component {
     }
    console.log("Curtiu")
   }
+
+  onClickSalvar = () =>{
+    console.log("Post salvo")
+    this.setState({
+      salvo:!this.state.salvo})
+  }
   
 
   onClickComentario = () => {
@@ -34,16 +47,31 @@ class Post extends React.Component {
     })
   }
 
+  onClickCompartilhar = () =>{
+    
+    this.setState({
+      compartilhar:!this.state.compartilhar})
+  }
+  
+
   aoEnviarComentario = () => {
     this.setState({
       comentando: true,
       numeroComentarios: this.state.numeroComentarios + 1, comentando:false
     })
   }
- 
+
+  aoCompartilhar =() =>{
+    this.setState({
+      compartilhar:false,
+    })
+
+    }
+   
 
   render() {
     let iconeCurtida
+    let iconeSalvar
 
     if(this.state.curtido) {
       iconeCurtida = iconeCoracaoPreto
@@ -51,16 +79,34 @@ class Post extends React.Component {
       iconeCurtida = iconeCoracaoBranco
     }
 
+    if(this.state.salvo) {
+      iconeSalvar = iconeBookmarkPreto
+    } else {
+      iconeSalvar = iconeBookmarkBranco
+    }
+
     let componenteComentario
+    let componenteCompartilhar
 
     if(this.state.comentando) {
       componenteComentario =<SecaoComentario aoEnviar={this.aoEnviarComentario}/>
     }
 
+    
+    if(this.state.compartilhar) {
+      componenteCompartilhar =<SecaoCompartilhar aoCompartilhar={this.aoCompartilhar}/>
+    }
+
     return <div className={'post-container'}>
       <div className={'post-header'}>
+      <div className={'user-info'}>
         <img className={'user-photo'} src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
         <p>{this.props.nomeUsuario}</p>
+      </div>
+      <IconeComContador 
+        icone={iconeSalvar}
+        onClickIcone={this.onClickSalvar}
+        />
       </div>
 
       <img className={'post-photo'} src={this.props.fotoPost} alt={'Imagem do post'}/>
@@ -77,9 +123,15 @@ class Post extends React.Component {
           onClickIcone={this.onClickComentario}
           valorContador={this.state.numeroComentarios}
         />
-  
-      </div>
-      {componenteComentario}
+
+      <img className={'share-icon'}src={iconeCompartilhar} onClick={this.onClickCompartilhar} />
+     
+     <div>
+       {componenteCompartilhar}
+     </div>
+
+     </div>                
+     {componenteComentario}
     </div>
   }
 }
