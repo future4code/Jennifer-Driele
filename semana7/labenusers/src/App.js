@@ -28,7 +28,7 @@ import styled from 'styled-components';
 class App extends React.Component {
   state = {
     name:"" ,
-    email:""
+    email:"" 
  };
 
  onChangeInputName = (event) =>{
