@@ -1,114 +1,64 @@
 import React from 'react';
-import axios from 'axios';
-import ListaUsuario from './components/ListaUsuarios';
+
+import UserListPage from './components/UserListPage';
+import CreateUserForm from './components/CreateUserForm'
 import styled from 'styled-components';
 
-
- const Botao =styled.button`
-  margin:auto;
-  margin-top:20px;
-  background-color:#993366 ;
-  color: white;
-  border: none; 
-  position:relative ;
-  color: white;
-  padding: 0.3em 3em;
-  border: none;
-  justify-content:center;
-  display: flex;
-  flex-direction: column;
-  
- `
- const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  width: 20%;
-  margin: 0 auto;
-  margin-top:50px;
-  padding: 20px;
+const AppContainer = styled.div`
+    font-family: sans-serif;
+    text-align: center;
  
- `
+`
+const BotaoTrocar = styled.button`
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    border: none;
+    background-color:#993366 ;
+    border-radius:10px;
+    padding: 0.5em 5em;
+  
+`
 
 class App extends React.Component {
   state = {
-    
-    name:"" ,
-    email:"" 
- };
-
- criarUsuario = () =>{
-  const body = {
-      name:this.state.name,
-      email:this.state.email
+    currentPage:"createUserForm"
   };
 
+  // Ou podemos fazer dessa forma
 
-  const request = axios.post(
-    "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users",
-     body,
-    {
-      headers:{
-        Authorization: "Jennifer-Silva-Jackson"
+  changePage = () => {
+    this.state.currentPage === "createUserForm"
+      ? this.setState({ currentPage: "userListPage" })
+      : this.setState({ currentPage: "createUserForm" });
+  };
+
+  // changePage = () => {
+  //   if(this.state.currentPage === "createUserForm"){
+  //     this.setState({currentPage:"userListPage"});
+  //   }else if(this.state.currentPage === "userListPage"){
+  //     this.setState({currentPage:"createUseForm"});
+  //   }
+  // };
+
+  render() {
+    const currentPage = () => {
+      if (this.state.currentPage === "createUserForm") {
+        return <CreateUserForm />;
+      } else if (this.state.currentPage === "userListPage") {
+        return <UserListPage />;
       }
-    }
-  );
-  request
-  .then((resposta) => {
-    alert(`A Conta ${this.state.name},${this.state.email}  foi criada com sucesso`);
-    this.setState({
-      name:"",
-      email:"",
-    });
-  })
-  .catch((erro) => {
-    alert("Erro");
-  });
-};
+    };
 
- onChangeInputName = (event) =>{
-  this.setState({name: event.target.value}) 
-}
- onChangeInputEmail = (event) =>{
-this.setState({email: event.target.value})
-}
-proximaPagina = () => {
-  this.props.user();
-};
-
-
-
-render() {
-  return (
-    <Container>
-    
-        <p>Nome:</p>
-        <input value={this.state.name}
-        onChange={this.onChangeInputName}
-        
-        />
-        <p>E-mail</p>
-        <input value={this.state.emal}
-        onChange={this.onChangeInputEmail}
-       
-        />
-      
-      <Botao onClick={this.criarUsuario}>Save</Botao>
-      <div>
-      <Botao onClick={this.proximaPagina}>
-        Página de Usuarios
-     </Botao>
-  
-      </div>
-      
-      </Container>
-      
-       
-        )
+    return (
+      <AppContainer>
+        {currentPage()}
+        <BotaoTrocar onClick={this.changePage}>Trocar de página</BotaoTrocar>
+      </AppContainer>
+    );
   }
-    
-    
-     
+
+   
 }
 export default App;
 
