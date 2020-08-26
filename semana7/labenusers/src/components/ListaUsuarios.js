@@ -1,16 +1,17 @@
 import React from 'react';
 import axios from 'axios';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 
-class ListaUsuarios extends React.Component {
+
+class ListaUsuario extends React.Component {
     state = {
      user:[],
    };
   
    pegarUsuarios = () => {
      const request = axios.get(
-      "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users",
+      "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users?",
       { 
         headers:{
           Authorization:"Jennifer-Silva-Jackson"
@@ -35,19 +36,17 @@ class ListaUsuarios extends React.Component {
    
     }
   
-   render(){
+   render() {
      return(
        <div>
          <h1>Usuários</h1>
-         {this.state.user.map((item) =>{
+         {this.state.user.map((item) => {
            return <p key={item.id}>{item.name}</p>
-           <button onClick={() => this.onDeleteUser(item.id)}>Deletar
-           </button>
          })}
        </div>
      )
    };
   }
   
-   export default ListaUsuarios;
+   export default ListaUsuario;
   
