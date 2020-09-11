@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid gray;
+  
+}
+.header_logo {
+  object-fit: contain;
+  width: 50px;
+}
+  
+.header_icon {
+  padding: 20px;
+  }
+  
+/* 
+  Botões do match */
+.swipeButtom {
+  bottom: 5px;
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+ 
+}
+.buttons_left {
+  color:  red !important;
+  border:1px solid red !important;
+    
+}
+.buttons_rigth {
+  color: green !important;
+  border:1px solid green !important;
+
+}
