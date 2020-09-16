@@ -1,32 +1,51 @@
 import React from 'react';
 import HomeIcon from '@material-ui/icons/Home';
-import Button from '@material-ui/core/Button';
-import { goToLoginPage ,goToHomePage } from '../RouterPage/goToPages';
+
+import { goToLoginPage ,goToTripListPage } from '../RouterPage/goToPages';
 import styled from "styled-components"; 
 import {useHistory} from "react-router-dom";
+import '../../App.css';
 
 
 const Container =styled.div`
 background-color:grey;
-padding:20px;
+padding:10px;
+display:flex;
+justify-content:space-around;
 `
 
  const Imagem = styled.img`
-  height: 40px;
+  height: 80px;
   object-fit: contain;
-  width: 50px;
+  width: 80px;
+  
+ 
 ` 
+const Botão =styled.button`
+border-radius:8px;
+width:90px;
+height:35px;
+margin-top:50px;
+
+`
+
 function HomePage() {
   const history = useHistory()
     return (
 
-      <Container>
-        <HomeIcon onClick={() => goToHomePage(history)} />
-        <Imagem src="./imagem/planet.png" alt='logo'/>
-       <h2>Astrotrip</h2>
-       <Button onClick={() => goToLoginPage(history)} variant="contained">Login</Button>
-      </Container>
      
+        <Container> 
+          
+        <HomeIcon onClick={() => goToTripListPage(history)} className="home" style={{ fontSize: 80 }}   />
+       
+        <h2> 
+        <Imagem src="./imagem/planet.png" alt='logo'/> 
+        AstroTrip
+        </h2>
+       <Botão onClick={() => goToLoginPage(history)}>Login</Botão>
+        <Botão onClick={() => goToLoginPage(history)}>Login</Botão>
+      
+       </Container>
   
     )
   }

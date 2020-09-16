@@ -15,7 +15,7 @@ export const goBack = (history) => {
    };
 
    export const goToDetailsPage = (history) => {
-    history.push("/Detalhes");
+    history.push("/Detalhe");
    };
 
    export const goToFormPage = (history) => {
