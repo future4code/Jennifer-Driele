@@ -26,7 +26,7 @@ function TripDetailsPage () {
 
   const getTripDetail = () => {
     axios
-      .get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/:jennifer/trip/${pathParams.id} `, {
+      .get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/jennifer-jackson/trip/${pathParams.id}`,{
         headers: {
           auth:window.localStorage.getItem("token")
         }
@@ -47,25 +47,21 @@ return(
     <div>
       <HomePage/>
       <CardContent  >
-     
-          <Typography  className="list" gutterBottom variant="h4" component="h2">
+        <Typography  className="list" gutterBottom variant="h4" component="h2">
            {trip.planet}
-           </Typography>
-             <Typography  className="list" variant="body2"  component="p">
+        </Typography>
+         <Typography  className="list" variant="body2"  component="p">
            {trip.durationDays}
-          </Typography>
-            
-          <Typography  className="list" variant="body1" color="textPrimary" component="h4">
+        </Typography>
+        <Typography  className="list" variant="body1" color="textPrimary" component="h4">
            {trip.date}
-          </Typography>
-          <Typography className="list" variant="body1" color="textPrimary" component="h5">
+        </Typography>
+        <Typography className="list" variant="body1" color="textPrimary" component="h5">
            {trip.name}  
-          </Typography>
-    
-          <Typography className="list" variant="body1" color="textPrimary" component="h5">
+        </Typography>
+        <Typography className="list" variant="body1" color="textPrimary" component="h5">
             {trip.description} 
-         
-          </Typography>
+        </Typography>
         </CardContent>
     </div>
   )
