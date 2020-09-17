@@ -1,14 +1,14 @@
 import React from 'react';
 import HomeIcon from '@material-ui/icons/Home';
 
-import { goToLoginPage ,goToTripListPage } from '../RouterPage/goToPages';
+import { goToLoginPage ,goToTripListPage,goToSignUpPage } from '../RouterPage/goToPages';
 import styled from "styled-components"; 
 import {useHistory} from "react-router-dom";
 import '../../App.css';
 
 
 const Container =styled.div`
-background-color:grey;
+background-color:rgb(47, 95, 110);
 padding:10px;
 display:flex;
 justify-content:space-around;
@@ -43,7 +43,7 @@ function HomePage() {
         AstroTrip
         </h2>
        <Botão onClick={() => goToLoginPage(history)}>Login</Botão>
-        <Botão onClick={() => goToLoginPage(history)}>Login</Botão>
+        <Botão onClick={() => goToSignUpPage(history)}>SignUp</Botão>
       
        </Container>
   

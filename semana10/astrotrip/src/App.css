@@ -12,8 +12,9 @@
 
 .card{
   margin-top: 30px;
-  width:70vw;
-  background-color:red;
+  width:30vw;
+  margin-left: 500px;
+  background-color:rgb(47, 95, 110);
   
 }
 

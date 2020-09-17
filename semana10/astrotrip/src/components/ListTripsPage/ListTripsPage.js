@@ -10,8 +10,15 @@ import HomePage from '../HomePage/HomePage';
 import {CardActions ,CardActionArea,CardContent} from '@material-ui/core';
 import '../../App.css';
 //import { useProtectPage } from "../hooks/useProtectPage";
+import styled from "styled-components"; 
+ 
+const Botao =styled.button`
+border-radius:8px;
+width:200px;
+height:35px;
+margin-top:50px;
 
-
+`
 function ListTripsPage () {
   const[trips, setTrips] = useState([])
   const history = useHistory()
@@ -44,7 +51,7 @@ function ListTripsPage () {
   {trips.map(trip => {
     return(
       
-      <div   key={trip.name}> 
+      <div key={trip.id}> 
       <CardActionArea  className="card2"> 
     <CardContent  className="card">
       <Typography  className="list" gutterBottom variant="h4" component="h2">
@@ -65,8 +72,8 @@ function ListTripsPage () {
         {trip.durationInDays} dias
       </Typography>
       <CardActions>
-       <Button onClick={()=> goToFormPage(history)}>Inscreva-se</Button>
-       <Button onClick={()=> goToDetailsPage(history)}>Detalhes da Viagem</Button>
+       <Botao onClick={()=> goToFormPage(history)}>Inscreva-se</Botao>
+       <Botao onClick={()=> goToDetailsPage(history, trip.id)}>Detalhes da Viagem</Botao>
      </CardActions>
      </CardContent>
      </CardActionArea>

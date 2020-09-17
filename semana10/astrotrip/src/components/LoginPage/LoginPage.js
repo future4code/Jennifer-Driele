@@ -4,7 +4,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import {goToDetailsPage} from '../RouterPage/goToPages';
+
 
 import styled from "styled-components";
 
@@ -26,7 +26,7 @@ function LoginPage() {
   useEffect(() => {
     const token = window.localStorage.getItem("token");
     if (token === null) {
-    history.push("/Detalhe")
+    history.push("/list" )
     }
   }, [history]);
 
@@ -48,7 +48,7 @@ function LoginPage() {
     .post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/jennifer/login`, body)
     .then((response)=>{
       window.localStorage.setItem("token",response.data.token)
-      history.push("/Detalhe")
+      history.push("list")
       console.log(response)
     })
     .catch((err)=>{

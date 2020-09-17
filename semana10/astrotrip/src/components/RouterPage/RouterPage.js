@@ -6,38 +6,39 @@ import HomePage from "../HomePage/HomePage"
 import ListTripsPage from "../ListTripsPage/ListTripsPage";
 import TripDetailsPage from "../TripDetailsPage/TripDetailsPage";
 import ApplicationFormPage from "../ApplicationFormPage/ApplicationFormPage";
-
+import SignUp from "../SignUp/SignUp";
 
 
 const Router = () => {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/Login">
-          <LoginPage />
-        </Route>
-        <Route exact path="/CriarTrip">
-          < CreateTripPage/>
-        </Route>
-        <Route exact path="/Trip">
-          < ListTripsPage/>
-        </Route>
-        <Route exact path="/Detalhe">
-          < TripDetailsPage/>
-          </Route>
-          <Route exact path="/Cadastro">
-          
-          < ApplicationFormPage/>
-        
-        </Route>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route>
-          <div>Eita Giovanna, o forninho caiu (404)</div>
-        </Route>
-      </Switch>
-    </BrowserRouter>
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/login">
+        <LoginPage />
+      </Route>
+      <Route exact path="/signup">
+        < SignUp/>
+      </Route>
+      <Route exact path="/trips-create">
+        < CreateTripPage/>
+      </Route>
+      <Route exact path="/list">  
+        < ListTripsPage/>
+      </Route>
+      <Route exact path="/details/:id">
+        < TripDetailsPage/>
+      </Route>
+      <Route exact path="/application-form">
+        < ApplicationFormPage/>
+      </Route>
+      <Route exact path="/">
+        <HomePage />
+      </Route>
+      <Route>
+        <div>Eita Giovanna, o forninho caiu (404)</div>
+      </Route>
+    </Switch>
+  </BrowserRouter>
   );
 };
 
