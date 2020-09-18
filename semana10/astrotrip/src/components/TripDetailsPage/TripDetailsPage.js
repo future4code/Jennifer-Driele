@@ -4,14 +4,25 @@ import { useHistory } from "react-router-dom";
 import Typography from '@material-ui/core/Typography';
 import {useParams} from 'react-router-dom';
 import HomePage from '../HomePage/HomePage';
-import {CardContent, } from '@material-ui/core';
+import {CardContent, CardActions} from '@material-ui/core';
 import '../../App.css';
+import styled from "styled-components"; 
+import {goBack} from '../RouterPage/goToPages';
+const Botao =styled.button`
+border-radius:8px;
+width:200px;
+height:35px;
+margin-top:50px;
+
+`
 
 
 function TripDetailsPage () {
   const [trip, setTrip] = useState({})
   const history = useHistory();
   const pathParams = useParams()
+ 
+
 
 
   useEffect(() => {
@@ -22,31 +33,35 @@ function TripDetailsPage () {
     } else {
       history.push("/");
     }
-  }, [history]);
+  }, [history]);  
 
   const getTripDetail = () => {
-    axios
-      .get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/jennifer-jackson/trip/${pathParams.id}`,{
+   axios
+      .get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/jennifer/trip/${pathParams.id}`,{
         headers: {
           auth:window.localStorage.getItem("token")
-        }
-      })
+          }
+       })
       
-      .then((response) => {
+      .then((response) => { 
         setTrip(response.data.trip)
         console.log(response.data.trip);
+
       })
       .catch((err) => {
         console.log(err.message);
       });
   }
  
+ 
   
-return( 
-
+return(
+ 
+     
+ 
     <div>
-      <HomePage/>
-      <CardContent  >
+     <HomePage/> 
+      <CardContent className="card" >
         <Typography  className="list" gutterBottom variant="h4" component="h2">
            {trip.planet}
         </Typography>
@@ -62,8 +77,13 @@ return(
         <Typography className="list" variant="body1" color="textPrimary" component="h5">
             {trip.description} 
         </Typography>
+        <CardActions>
+       <Botao onClick={()=> goBack(history)}>Voltar</Botao>
+       </CardActions>
         </CardContent>
+    
     </div>
+    
   )
  
 }

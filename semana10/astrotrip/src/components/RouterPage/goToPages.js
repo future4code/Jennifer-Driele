@@ -18,7 +18,7 @@
    };
 
    export const goToDetailsPage = (history,id) => {
-    history.push(`details/${id}`);
+    history.push('/details/:id');
    };
 
    export const goToFormPage = (history) => {

@@ -10,7 +10,7 @@ import styled from "styled-components";
 
 
 const Container = styled.div`
- display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
@@ -62,31 +62,28 @@ function LoginPage() {
         <HomePage/>
         <Container> 
         <TextField
-              id="filled-basic"
-              label="E-mail:"
-              variant="filled"
-              type="text"
-              value={emailValue}
-              onChange={handleEmailChange}
-              
-            />
-            <br/>
-            <TextField
-              id="filled-basic"
-              label="Password:"
-              variant="filled"
-              type="text"
-              value={passwordValue}
-              onChange={handlePasswordChange}
-              />
-               <br/>
-               <Button variant="contained" onClick={handleLogin} >
+          id="filled-basic"
+          label="E-mail:"
+          variant="filled"
+          type="text"
+          value={emailValue}
+          onChange={handleEmailChange}
+        />
+        <br/>
+        <TextField
+          id="filled-basic"
+          label="Password:"
+          variant="filled"
+          type="text"
+          value={passwordValue}
+          onChange={handlePasswordChange}
+        />
+        <br/>
+          <Button variant="contained" onClick={handleLogin} >
             Submit
           </Button>
           </Container>
-     
-      </div>
-    );
-  }
-  
-  export default LoginPage;
+    </div>
+  );
+}
+export default LoginPage;

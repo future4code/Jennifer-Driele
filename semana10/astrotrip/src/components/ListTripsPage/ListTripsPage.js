@@ -3,32 +3,25 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {useHistory} from "react-router-dom";
 import {goToFormPage,goToDetailsPage} from '../RouterPage/goToPages';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-//import {useParams} from 'react-router-dom';
 import HomePage from '../HomePage/HomePage';
 import {CardActions ,CardActionArea,CardContent} from '@material-ui/core';
 import '../../App.css';
-//import { useProtectPage } from "../hooks/useProtectPage";
 import styled from "styled-components"; 
  
 const Botao =styled.button`
-border-radius:8px;
-width:200px;
-height:35px;
-margin-top:50px;
+  border-radius:8px;
+  width:200px;
+  height:35px;
+  margin-top:50px;
 
 `
 function ListTripsPage () {
   const[trips, setTrips] = useState([])
   const history = useHistory()
-  //const pathParams = useParams
 
   
- 
-  
-
-  const getListTrip = () =>{
+const getListTrip = () =>{
  axios
     .get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/jennifer/trips`)
    
@@ -50,7 +43,6 @@ function ListTripsPage () {
 <HomePage/>
   {trips.map(trip => {
     return(
-      
       <div key={trip.id}> 
       <CardActionArea  className="card2"> 
     <CardContent  className="card">
@@ -77,16 +69,10 @@ function ListTripsPage () {
      </CardActions>
      </CardContent>
      </CardActionArea>
-
-     
-     </div> 
-    
-     
+</div> 
     )
   })}
 </div>
-    
-    );
-  }
-  
-  export default ListTripsPage ;
+ );
+}
+export default ListTripsPage ;

@@ -49,9 +49,9 @@ function SignUp () {
           password:passwordValue
       };
       axios
-      .post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/jennifer/signup`, body,axiosConfig)
+      .post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/jennifer/signup`,body,axiosConfig)
       .then((response)=>{
-        window.localStorage.setItem("token",response.data.token)
+        window.localStorage.setItem("token",response.data.signup)
         history.push("/")
         console.log(response.data)
       })
@@ -82,7 +82,7 @@ function SignUp () {
                 label="Password:"
                 variant="filled"
                 type="text"
-                riquered
+                
                 value={passwordValue}
                 onChange={handlePasswordChange}
                 />

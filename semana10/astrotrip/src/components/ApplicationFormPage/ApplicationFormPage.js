@@ -5,15 +5,18 @@ import TextField from "@material-ui/core/TextField";
 import {useHistory} from "react-router-dom";
 import styled from "styled-components";
 import HomePage from '../HomePage/HomePage';
-import { baseUrl, axiosConfig } from "../constants/axiosContants";
+import {  axiosConfig } from "../constants/axiosContants";
 
-const Form = styled.div`
- display: flex;
+const Container2 = styled.div`
+  display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
   text-align: center;
-  color: #cecece;
+  background-color: rgb(47, 95, 110);
+  margin-left:500px;
+  margin-right:500px
+
 `;
 
 function ApplicationFormPage () {
@@ -24,7 +27,7 @@ function ApplicationFormPage () {
   const [profession, setProfession] = useState("")
   const [country, setCountry] = useState("")
   const history = useHistory()
-  const [approve, setApprove] = useState(true)
+  //const [approve, setApprove] = useState(true)
 
   
   const handleName = (event) => {
@@ -55,7 +58,7 @@ function ApplicationFormPage () {
     axios
     .post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/jennifer/trips/:id/apply`, body,axiosConfig)
     .then((response)=>{
-      window.localStorage.setItem("token",response.data.apply)
+      window.localStorage.setItem("token",response.data.token)
       history.push("/")
       console.log(response)
     })
@@ -63,70 +66,67 @@ function ApplicationFormPage () {
       console.log(err)
     })
   }
-
   
-  
-    return (
-      <div> 
-        <HomePage/>
-      <Form>
-         <h2>Increva-se</h2>
-      <TextField 
-      id="filled-basic" 
+  return (
+    <div>
+      <HomePage/>
+  <Container2>
+          <h2>Increva-se</h2>
+    <TextField 
+      id="name" 
       label="Name:" 
       variant="filled" 
       type="text"
       value={name}
       onChange={handleName}
-               />
-      <p>
-      <TextField 
+      pattern="[A-Za-z] {3,}"
+      required
+    />
+    <p>
+    <TextField 
       id="filled-basic"
-       label="Age:"
-        variant="filled"
-        type="text"
-        value={age}
+      label="Age:"
+      variant="filled"
+      type="text"
+      value={age}
       onChange={handleAge}
-          />
-      </p>
-      <p>
-        <TextField
-          id="filled-basic"
-          label="Apllication Text:"
-          variant="filled"
-          type="text"
-          value={apllicationText}
+    />
+    </p>
+    <p>
+    <TextField
+      id="filled-basic"
+      label="Apllication Text:"
+      variant="filled"
+      type="text"
+      value={apllicationText}
       onChange={handleApllication}
-        />
-      </p>
-      <p>
-        <TextField
-          id="filled-basic"
-          label="Profession:"
-          variant="filled"
-          type="text"
-          value={profession}
+    />
+    </p>
+    <p>
+    <TextField
+      id="filled-basic"
+      label="Profession:"
+      variant="filled"
+      type="text"
+      value={profession}
       onChange={handleProfession}
-        />
-      </p>
-
-      <p>
-        <TextField
-          id="filled-basic"
-          label="Country:"
-          variant="filled"
-          type="text"
-          value={country}
+    />
+    </p>
+    <p>
+    <TextField
+      id="filled-basic"
+      label="Country:"
+      variant="filled"
+      type="text"
+      value={country}
       onChange={handleCountry}
-        />
-      </p>
+    />
+    </p>
       <Button variant="contained" onClick={handleApllicationForm}>
         Submit
       </Button>
-       
-      </Form>
-      </div>
-    );
-  }
-  
-  export default ApplicationFormPage ;
+  </Container2>
+    </div>
+  );
+}
+export default ApplicationFormPage ;
