@@ -1,16 +1,11 @@
 import React, {useState , useEffect} from 'react';
 import { axiosConfig } from '../constants/axiosContants';
-import HomePage from '../HomePage/HomePage';
+import Header from '../Header/Header';
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-
-
-
 import styled from "styled-components";
-
-
 
 const Container = styled.div`
  display: flex;
@@ -20,6 +15,11 @@ const Container = styled.div`
   text-align: center;
   color: #cecece;
 `;
+
+const Logo = styled.h1`
+  text-align:center;
+  color:rgb(47, 95, 110);
+`
 
 function SignUp () {
     const [emailValue,setEmailValue] = useState("");
@@ -36,8 +36,8 @@ function SignUp () {
   
     useEffect(() => {
       const token = window.localStorage.getItem("token");
-      if (token === null) {
-      history.push("/")
+      if (token === true) {
+      history.push("/list")
       }
     }, [history]);
   
@@ -52,7 +52,7 @@ function SignUp () {
       .post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/jennifer/signup`,body,axiosConfig)
       .then((response)=>{
         window.localStorage.setItem("token",response.data.signup)
-        history.push("/")
+        history.push("/list")
         console.log(response.data)
       })
       .catch((err)=>{
@@ -63,7 +63,8 @@ function SignUp () {
   
       return (
         <div>
-          <HomePage/>
+         <Header/>
+         <Logo>SignUp</Logo>
           <Container>
          
           <TextField

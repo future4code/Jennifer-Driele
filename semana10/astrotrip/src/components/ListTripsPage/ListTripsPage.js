@@ -2,10 +2,10 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {useHistory} from "react-router-dom";
-import {goToFormPage,goToDetailsPage} from '../RouterPage/goToPages';
+import {goToFormPage,goToDetailsPage,goToCreatePage} from '../RouterPage/goToPages';
 import Typography from '@material-ui/core/Typography';
-import HomePage from '../HomePage/HomePage';
-import {CardActions ,CardActionArea,CardContent} from '@material-ui/core';
+import Header from '../Header/Header';
+import {CardActions ,CardContent} from '@material-ui/core';
 import '../../App.css';
 import styled from "styled-components"; 
  
@@ -14,6 +14,16 @@ const Botao =styled.button`
   width:200px;
   height:35px;
   margin-top:50px;
+
+`
+
+const Botao2 =styled.button`
+  border-radius:8px;
+  width:150px;
+  height:35px;
+  margin-top:30px;
+  margin-left:30px;
+  background:rgb(47, 95, 110);
 
 `
 function ListTripsPage () {
@@ -40,12 +50,17 @@ const getListTrip = () =>{
 
     return(
 <div>
-<HomePage/>
+<Header/>
+<Botao2  onClick={()=> goToCreatePage(history)}>Create Trip</Botao2>
+
+
   {trips.map(trip => {
     return(
+      
       <div key={trip.id}> 
-      <CardActionArea  className="card2"> 
-    <CardContent  className="card">
+     
+     
+    <CardContent  className="card3">
       <Typography  className="list" gutterBottom variant="h4" component="h2">
        {trip.name}
        </Typography>
@@ -68,7 +83,7 @@ const getListTrip = () =>{
        <Botao onClick={()=> goToDetailsPage(history, trip.id)}>Detalhes da Viagem</Botao>
      </CardActions>
      </CardContent>
-     </CardActionArea>
+   
 </div> 
     )
   })}

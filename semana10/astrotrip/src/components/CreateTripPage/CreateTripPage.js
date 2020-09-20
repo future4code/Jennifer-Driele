@@ -1,27 +1,29 @@
 
 import React from 'react';
 import TextField from "@material-ui/core/TextField";
-import { useForm } from "../Hooks/UseForm";
+import { useForm } from "../Hooks/useForm";
 import axios from "axios";
 import Button from "@material-ui/core/Button";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
-import { useProtectPage } from "../Hooks/useProtectPage";
-import HomePage from '../HomePage/HomePage';
+import Header from '../Header/Header';
 import styled from "styled-components";
-import { Typography } from '@material-ui/core';
+
 
 
 const Container = styled.div`
   font-family: sans-serif;
   margin-top: 50px;
+  padding-top:20px;
   text-align: center;
   background-color: rgb(47, 95, 110);
   margin-left:500px;
-  margin-right:500px
+  margin-right:500px;
+  height:100vh;
 `;
 
 function CreateTripPage() {
+  // const [date,setDate] = useState(new Date())
   const {form ,onChange ,resetState} = useForm({
     name:"",
     planet:"",
@@ -31,18 +33,14 @@ function CreateTripPage() {
 })
 
 const hadledInputChange =(event)=> {
-  const {name, value} = event.target;
-  onChange(name,value)
+  const {name,value}= event.target
+
+    onChange(name,value)
 }
 
-const handleSubmittion = (event) => {
+
+const handleSubmittion =(event) => {
   event.preventDefault();
-
-  console.log(form);
-  resetState();
-};
-
-const getCreateTrip =() => {
   const body = {
     name:form.name,
     planet:form.planet,
@@ -64,33 +62,38 @@ const getCreateTrip =() => {
      .catch((err) => {
        console.log(err)
      })
+     resetState();
 }
-useProtectPage(getCreateTrip)
+
 
 
     return (
       <div>
-        <HomePage/>
-        <Container> 
+     <Header/>
+     
+        <Container>
+        <h2>Crie sua Trip </h2> 
       <form  onSubmit={handleSubmittion}> 
-      <Typography for ="name">Name:</Typography>
-      <TextField
+     
+     <TextField
+        label={"Nome"}
         variant="filled" 
-        type="text"
-        value={form.name}
+        value={form['name']}
         onChange={hadledInputChange}
         pattern="[A-Za-z] {3,}"
         required={true}
       />
       <p>
-      <Typography for ="name">Planet:</Typography>
-      <Select
+     
+     <Select
+     l  label={"Planet"}
         variant="filled"
-        type="text"
-        value={form.platet}
+        value={form['planet']}
         onChange={hadledInputChange}
         required={true}
       >
+    
+
       <MenuItem value=""></MenuItem>
       <MenuItem value="Terra">Terra</MenuItem>
       <MenuItem value="Mercurio">Mercúrio</MenuItem>
@@ -104,29 +107,29 @@ useProtectPage(getCreateTrip)
       </Select>
       </p>
       <p>
-      <Typography for ="name">Date:</Typography>
       <TextField
+      
         variant="filled"
-        type="date"
-        value={form.date}
+        value={form['date']}
         onChange={hadledInputChange}
         min="YYYY-MM-DD"
+        type="date"
         required={true}
       />
       </p>
       <p>
-      <Typography for ="name">Duration:</Typography>
-      <TextField
+     <TextField
+     label={"Duração"}
         variant="filled"
         type="number"
-        value={form.durationInDays}
+        value={form['durationInDays']}
         onChange={hadledInputChange}
         min="10"
         required={true}
       />
       </p>
-      <Button type="submit" variant="contained" >
-      Create Trip
+      <Button type={"submit"} variant="contained" >
+      Criar
       </Button>
     </form>
     </Container>
