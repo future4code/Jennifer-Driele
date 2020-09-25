@@ -30,6 +30,22 @@ const getTasks = () => {
          console.log(err)
      })
  }
+
+ const taskDays =(day) =>{
+     const renderDays = task.map((task)=>{
+         if(task.day === day) {
+             return(
+                 <div>
+                     <p>
+                         {task.text} {''}
+                         <button onClick ={() =>deleteTask(task.id)}>x</button>
+                     </p>
+                 </div>
+             )
+         }
+     })
+     return renderDays
+ }
 //  const tasksDay = task.filter ((item) =>{
 //      return item.day === "Domingo";
 //  })
@@ -52,16 +68,13 @@ const getTasks = () => {
     <div>
 
 <section className="secao">
-         {task.map((element,index) =>{
+         {/* {task.map((element,index) =>{
             return( 
              <p key={element.id}>{index +1}: {element.text || "sem atividade"}
-                <button onClick ={() =>deleteTask(element.id)}>x</button>
+                </section><button onClick ={() =>deleteTask(element.id)}>x</button>
             </p>
             )
-        })}
-
-
-
+        })} */}
 
 <div className="semana">
       <h3>Domingo</h3>
