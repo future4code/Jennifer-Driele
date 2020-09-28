@@ -36,7 +36,7 @@ class App extends React.Component {
   // changePage = () => {
   //   if(this.state.currentPage === "createUserForm"){
   //     this.setState({currentPage:"userListPage"});
-  //   }else if(this.state.currentPage === "userListPage"){
+  //   }else{  
   //     this.setState({currentPage:"createUseForm"});
   //   }
   // };
@@ -54,6 +54,7 @@ class App extends React.Component {
       <AppContainer>
         {currentPage()}
         <BotaoTrocar onClick={this.changePage}>Trocar de página</BotaoTrocar>
+        {this.state.currentPage === "createUserForm" ? <CreateUserForme /> : <CreateUserForme />}
       </AppContainer>
     );
   }
