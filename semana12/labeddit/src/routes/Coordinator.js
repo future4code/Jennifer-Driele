@@ -14,7 +14,7 @@ export const goToLoginPage = (history) => {
     history.push(`/comentario/${id}`)
   }
   
-//   export const goToRecipeDetail = (history, id) => {
-//     history.push(`/receitas/${id}`)
-//   }
+  export const goToListPage = (history, id) => {
+    history.push(`/list/${id}`)
+  }
   

@@ -8,7 +8,9 @@ import Header from './components/Header'
 import styled from 'styled-components'
 
 const InnerScreenContainer = styled.div`
-  padding-top: 80px;
+  padding-top: 150px;
+  display: flex;
+  justify-content: center;
 `
 
 const App = () => {

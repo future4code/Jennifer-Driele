@@ -6,6 +6,7 @@ import AddPostPage from '../screens/AddPostPage/AddPostPage'
 import AddComentPage from '../screens/AddComentPage/AddComentPage'
 //import AddRegisterPage from '../screens/AddRegisterPage/AddRegisterPage'
 import ErrorPage from '../screens/ErrorPage/ErrorPage'
+import ListPostPage from '../screens/ListPostPage/ListPostPage'
 
 const Router = () => {
   return(
@@ -21,6 +22,9 @@ const Router = () => {
         </Route>
         <Route exact path={'/comentario/:id'}>
           <AddComentPage/>
+        </Route>
+        <Route exact path={'/list/:id'}>
+          <ListPostPage/>
         </Route>
         <Route>
           <ErrorPage/>

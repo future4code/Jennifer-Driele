@@ -1,8 +1,17 @@
-import React from 'react'
+import React from 'react';
+import { AppContainer,PostContainer,PostTitulo,InputPost,Botão} from './styled'
 
-const AddPostPage = () => {
+function AddPostPage ()  {
+
   return(
-    <div></div>
+    <AppContainer>  
+    <PostContainer>
+      <PostTitulo>Adicionar Post!</PostTitulo>
+      <InputPost></InputPost>
+      <InputPost></InputPost>
+      <Botão>Postar</Botão>
+    </PostContainer>
+    </AppContainer>
   ) 
 }
 

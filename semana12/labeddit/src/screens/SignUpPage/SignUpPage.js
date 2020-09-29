@@ -1,7 +1,15 @@
 import React from 'react'
+import { ScreenContainer } from './styled'
+import SignUpForm from './SignUpForm'
+import useProtectPage from '../../hooks/useProtectPage'
 
 const SignUpPage = () => {
-  return <div>Add Recipe Page</div>
+  useProtectPage()
+  return (
+    <ScreenContainer>
+      <SignUpForm />
+    </ScreenContainer>
+  )
 }
 
 export default SignUpPage
