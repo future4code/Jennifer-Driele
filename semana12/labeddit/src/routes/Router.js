@@ -2,29 +2,24 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import LoginPage from '../screens/LoginPage/LoginPage'
 import SignUpPage from '../screens/SignUpPage/SignUpPage'
-import AddPostPage from '../screens/AddPostPage/AddPostPage'
-import AddComentPage from '../screens/AddComentPage/AddComentPage'
-//import AddRegisterPage from '../screens/AddRegisterPage/AddRegisterPage'
+import PostDetailsPage from '../screens/CreateCommentPage/PostDetailsPage'
 import ErrorPage from '../screens/ErrorPage/ErrorPage'
-import ListPostPage from '../screens/ListPostPage/ListPostPage'
+import FeedPage from '../screens/CreateCommentPage/FeedPage'
 
 const Router = () => {
   return(
       <Switch>
-        <Route exact path={'/login'}>
+        <Route exact path={'/'}>
           <LoginPage/>
         </Route>
         <Route exact path={'/signup'}>
           <SignUpPage/>
         </Route>
-        <Route exact path={['/post', '/']}>
-          <AddPostPage/>
+        <Route exact path={'/post/:postId'}>
+          <PostDetailsPage/>
         </Route>
-        <Route exact path={'/comentario/:id'}>
-          <AddComentPage/>
-        </Route>
-        <Route exact path={'/list/:id'}>
-          <ListPostPage/>
+        <Route exact path={'/feed'}>
+          <FeedPage/>
         </Route>
         <Route>
           <ErrorPage/>

@@ -2,14 +2,14 @@ import { useHistory } from 'react-router-dom'
 import { useEffect } from 'react'
 import { goToFeedPage } from '../routes/Coordinator'
 
-const useProtectPage = () => {
+const useProtectedPage = () => {
   const history = useHistory()
   useEffect(() => {
     const token = localStorage.getItem('token')
-    if (!token ){
+    if (token === true){
       goToFeedPage(history)
     }
   }, [history])
 }
 
-export default useProtectPage
+export default useProtectedPage

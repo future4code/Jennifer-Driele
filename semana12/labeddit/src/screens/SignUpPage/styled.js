@@ -6,8 +6,6 @@ export const ScreenContainer = styled.div`
   align-items: center;
   width: 100vw;
 `
-
-
 export const InputsContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -27,6 +25,6 @@ export const SignUpFormContainer = styled.div`
   color:#6699ff;
 `
 export const ButtonCast = styled.div`
-width: 80vw;
+  width: 80vw;
   max-width: 300px;
 `

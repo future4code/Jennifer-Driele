@@ -1,31 +1,31 @@
 import React from 'react'
 import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
 import { useHistory } from 'react-router-dom'
-import {goToLoginPage, goToSignUpPage } from '../routes/Coordinator'
+import {goToLoginPage} from '../routes/Coordinator'
 import Button from '@material-ui/core/Button'
-import styled from 'styled-components'
+import {Menu , Imagem} from './styled'
+import Reddit from '../assets/reddit.png'
 
-const Menu = styled.div`
-display:flex;
-justify-content:space-between;
-margin-left:45px;
-`
 const Header = () => {
   const history = useHistory()
   return(
-
-    <AppBar>
-      <Toolbar>
-      <Menu>
-         <h2>LabeEddit</h2>
-        <Button onClick={() => goToLoginPage(history)}>Login</Button>
-        <Button onClick={() => goToSignUpPage(history)}>SignUp</Button>
-        </Menu>
-      </Toolbar>
-    </AppBar>
-  
+  <AppBar>
+    <Menu>
+    <h2>
+      <Imagem src={Reddit} alt={'Erro404'}/>
+      LabeEddit
+    </h2>
+    <Button
+      onClick={() => goToLoginPage(history)}
+      color={'primary'}
+      variant={'contained'}
+      type={'submit'}
+      medianWidth
+      margin={'normal'}
+         >Login
+    </Button>
+    </Menu>
+  </AppBar>
   )
 }
-
 export default Header

@@ -1,5 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles'
-import { neutralColor, primaryColor } from './colors'
+import { neutralColor, primaryColor,secondaryColor } from './colors'
 
 const theme = createMuiTheme({
   palette: {
@@ -7,8 +7,13 @@ const theme = createMuiTheme({
       main: primaryColor,
       contrastText: 'white'
     },
+    secondary: {
+      main: secondaryColor,
+      contrastText: 'white'
+    },
     text: {
       primary: neutralColor
+     
     }
   }
 })
