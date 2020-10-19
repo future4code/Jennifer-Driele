@@ -7,6 +7,5 @@ const showTask =(task) =>{
     taskList.push(task);
   console.table("Tarefa adicionada com sucesso:"+taskList)
 
-};
-
+}
 showTask(userTask);
