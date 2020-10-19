@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+.dias-semana{
+  height: 5vh;
+  width: 15%;
+  background-color:  #003380;
+  margin-left: 20px;
+  color:white;
+}
+
+
+.secao {
+  display: flex;
+  justify-content: space-evenly;
+  height: 90vh;
+  background-color:blue ;
+  color:white;
+}
+
+
+.semana {
+  border: 1px dotted rgb(53, 53, 53);
+  width: 14%;
+  padding: 10px;
+
+}
+
+.tarefa{
+  height: 5vh;
+  width: 20%;
+  background-color:  #003380;
+ 
+}
