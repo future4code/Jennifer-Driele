@@ -30,42 +30,42 @@ let users:user[] = [
         id: 1,
         name: "Alice",
         email: "alice@email.com",
-        type: "UserType.ADMIN",
+        type: UserType.ADMIN,
         age: 12
     },
     {
         id: 2,
         name: "Bob",
         email: "bob@email.com",
-        type: "UserType.NORMAL",
+        type: UserType.NORMAL,
         age: 36
     },
     {
         id: 3,
         name: "Coragem",
         email: "coragem@email.com",
-        type: "UserType.NORMAL",
+        type: UserType.NORMAL,
         age: 21
     },
     {
         id: 4,
         name: "Dory",
         email: "dory@email.com",
-        type: "UserType.NORMAL",
+        type: UserType.NORMAL,
         age: 17
     },
     {
         id: 5,
         name: "Elsa",
         email: "elsa@email.com",
-        type: "UserType.ADMIN",
+        type: UserType.ADMIN,
         age: 17
     },
     {
         id: 6,
         name: "Fred",
         email: "fred@email.com",
-        type: "UserType.ADMIN",
+        type: UserType.ADMIN,
         age: 60
     }
 ]
@@ -76,10 +76,10 @@ let users:user[] = [
 // b)app.get("/users",(req:Request, res:Response) =>{
 //});
 
-app.get("/users", (req: Request, res: Response): void =>{
-
+app.get("/users", (req: Request, res: Response): void => {
     try{
         res.status(200).send(users);
+
     }catch(error){
         res.status(400).send({
             message: "Error searching for users"
@@ -88,38 +88,37 @@ app.get("/users", (req: Request, res: Response): void =>{
 });
 
 // Exercício 2
-
 //a) Utilizando pathParams por ser dados controlados e conhecidos
 //b) através do enum que defini dados types que podem ser utilizados
 
-// app.get("/users/:type", (req: Request, res: Response): void =>{
+app.get("/users/:type", (req: Request, res: Response): void => {
+    try{
+        const usersByType = users.filter((user)=> user.type === req.params.type)
+        if(req.params.type !== UserType.ADMIN && req.params.type !== UserType.NORMAL){
+            req.params.type = "NORMAL"
+        }
+        res.status(200).send(usersByType);
 
-//     try{
-//         const usersByType = users.filter((user)=> user.type === req.params.type)
-//         if(req.params.type !== UserType.ADMIN && req.params.type !== UserType.NORMAL){
-//             req.params.type = "NORMAL"
-//         }
-//         res.status(200).send(usersByType);
-
-//     }catch(error){
-//         res.status(400).send({
-//             message: "Error searching for users"
-//         });
-//     }
-// });
+    }catch(error){
+        res.status(400).send({
+            message: "Error searching for users"
+        });
+    }
+});
 
 //Exercício 3
 //a)O tipo query trata-se de dados  aleatorios
 
 app.get("/users/query/", (req: Request, res: Response): void =>{
     console.log(req.query.name)
- 
     let user:user | undefined = users.find(user => user.name === req.query.name)
+    
     try{
         if(!user){
             throw new Error()
         }
       res.status(200).send(user);
+
     }catch{
         res.status(400).send({
             message: "Error searching for users"
@@ -130,7 +129,8 @@ app.get("/users/query/", (req: Request, res: Response): void =>{
 // Exercício 4
 //a) não mudou nada
 //b)
-app.post("/users", (req: Request, res: Response): void=>{
+
+app.post("/users", (req: Request, res: Response): void => {
     try{
         const {id, name, email, age, type} = req.body;
         const user:user = {
@@ -140,9 +140,9 @@ app.post("/users", (req: Request, res: Response): void=>{
             age:age,
             type:type
         }
-
         users.push(user);
         res.status(200).send({message: "User created successfully"});
+
     }catch(error){
         res.status(400).send({
             message: "Error inserting for users"
@@ -151,14 +151,11 @@ app.post("/users", (req: Request, res: Response): void=>{
 })
 
 //Exercício 5
-app.put("/users/id", (req: Request, res: Response): void=>{
 
+app.put("/users", (req: Request, res: Response): void =>{
     try{
-
         const {id, name} = req.body;
-
         const userIndex = users.findIndex((u)=> u.id === id);
-
         if(userIndex === -1){
             throw new Error();
         }
@@ -174,14 +171,10 @@ app.put("/users/id", (req: Request, res: Response): void=>{
 
 // Exercício 6
 
-app.patch("/users/id", (req: Request, res: Response): void=>{
-
+app.patch("/users", (req: Request, res: Response): void => {
     try{
-
         const {id, name} = req.body;
-
         const userIndex = users.findIndex((u)=> u.id === id);
-
         if(userIndex === -1){
             throw new Error();
         }
@@ -198,11 +191,13 @@ app.patch("/users/id", (req: Request, res: Response): void=>{
 
 //Exercício 7
 
-app.delete("/users/id", (req:Request, res:Response):void =>{
-    try{
-        const userIndex: number | undefined = users.findIndex((user)=>user.id === Number(req.params.id))
+app.delete("/users/:id", (req:Request, res:Response):void => {
+     try{
+        const userIndex: number | undefined = users.findIndex((user)=>user.id === Number(req.params.id)
+        )
         console.log(req.params.id)
         console.log(userIndex)
+
         if(userIndex === -1){
             console.log(userIndex)
             throw new Error("unregister user")
@@ -215,10 +210,7 @@ app.delete("/users/id", (req:Request, res:Response):void =>{
             message:`$error.message`
         })
     }
-
 })
-
-
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
