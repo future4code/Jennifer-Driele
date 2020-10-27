@@ -63,3 +63,32 @@ WHERE
   AND salary BETWEEN 350000 AND 900000;
 
 ### EXERCÍCIO 5
+
+a-)CREATE TABLE ( è utilizado para criar uma tabela, recebe o nome das tabelas os dos principais tipos de cada colunas ex: strings, datas etc...)
+
+### Exercício 6
+
+a-)SELECT id, title, rating FROM Movie WHERE id = "004";
+
+b-)SELECT * FROM Movie WHERE title = "Deus é Brasileiro";
+
+c-)SELECT id, title, synopsis FROM Movie WHERE rating > 7;
+
+### Exercício 7
+
+a-)SELECT * FROM Movie
+WHERE title LIKE "%vida%";
+
+b-)SELECT * FROM Movie
+WHERE title LIKE "%TERMO DE BUSCA%" OR
+      synopsis LIKE "%TERMO DE BUSCA%";
+
+c-)SELECT * FROM Movie
+WHERE release_date < "2020-05-04";
+
+d-)SELECT * FROM Movie
+WHERE release_date < "2020-05-04" AND 
+      (title LIKE "%TERMO DE BUSCA%" OR
+      synopsis LIKE "%TERMO DE BUSCA%") AND rating > 7;
+
+		
