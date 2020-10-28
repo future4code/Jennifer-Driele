@@ -30,10 +30,10 @@ WHERE name = "JULIANA PÃES";
 
 c-)UPDATE Actor
 SET 
-		name = "Moacyr Franco",
-		birth_date = "2020-02-10",
+		name = "Julia Roberts",
+		birth_date = "2000-02-20",
     salary = 600000,
-    gender = "male"
+    gender = "female"
 WHERE id = "005";
 
 d-)UPDATE Actor
@@ -107,7 +107,7 @@ b-)SELECT AVG(rating) FROM Movie;
 
 c-)SELECT COUNT(*) FROM Movie WHERE playing_limit_date > CURDATE();
 
-d-)SELECT COUNT(*) FROM Movie WHERE release_date < CURDATE();
+d-)SELECT COUNT(*) FROM Movie WHERE release_date > CURDATE();
 
 e-)SELECT MAX(rating) FROM Movie;
 
@@ -122,7 +122,7 @@ b-)SELECT * FROM Movie ORDER BY title LIMIT 5;
 c-)SELECT * FROM Movie 
 WHERE release_date < CURDATE() 
 ORDER BY release_date DESC 
-LIMIT 3;
+LIMIT 5;
 
 d-)SELECT * FROM Movie 
 ORDER BY rating DESC 
