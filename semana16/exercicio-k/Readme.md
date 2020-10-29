@@ -1,6 +1,7 @@
 ### EXERCÍCIO 1
 
-a-) Quando usamos o método raw, ele nos permite que enviemos uma query para o banco de dados usando a linguagem SQL diretamente.Ela fará uma comunicação externa com o banco.
+a-) Quando usamos o método raw, ele nos permite que enviemos uma query para o banco de dados usando a linguagem SQL diretamente.Ela fará uma comunicação externa com o banco. ela retorna uma promisse com o resultado.
+
 
 b-)
  async function searchActorByName(

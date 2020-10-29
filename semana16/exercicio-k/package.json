@@ -4,9 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "clear && echo \"Starting application... \" && tsc && node ./build/index.js",
+    "dev": "ts-node-dev ./src/index.ts"
   },
-  "keywords": [],
+  "keywords": [
+    "knex",
+    "express",
+    "dotenv"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
