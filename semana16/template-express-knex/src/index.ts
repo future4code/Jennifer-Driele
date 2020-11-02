@@ -5,6 +5,9 @@ import dotenv from "dotenv";
 import { AddressInfo } from "net";
 import { getCreateUser } from "./endpoints/getCreateUser";
 import { getUserById } from "./endpoints/getUserById";
+import { getEditUser } from "./endpoints/getEditUser";
+import { getTaskUser } from "./endpoints/getTaskUser";
+import { getTaskById } from "./endpoints/getTaskById";
 
 dotenv.config();
 console.log(process.env.teste)
@@ -28,6 +31,10 @@ app.use(cors())
 
 app.put("/user",getCreateUser)
 app.get("/user/:id",getUserById)
+app.post("/user/edit/:id", getEditUser)
+
+app.put("/task",getTaskUser)
+app.get("/task/:id", getTaskById)
 
 
 const server = app.listen(process.env.PORT || 3003, () => {

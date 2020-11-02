@@ -9,10 +9,10 @@ import { connection} from "../index";
   ): Promise<void> => {
     await connection
       .insert({
-       id:id,
-        name: name,
-        nickname: nickname,
-        email: email,
+       id,
+        name,
+        nickname,
+        email,
       })
       .into("ListUser");
   };

@@ -5,13 +5,21 @@ import { selectUserById } from "../data/selectUserById";
 export const getUserById = async (req: Request, res: Response) => {
     try {
    const id = req.params.id;
-   
    const user = await selectUserById(id);
 
-   res.status(200).send(user)
+   //validar a saida
+   if(!user){
+       res.status(400).send({
+           message:"Usuário não encontrado"
+       })
+   }
+    res.status(200).send(user)
+   
+
  } catch (err) {
    res.status(400).send({
-     message: err.message,
+     message: err.message ||  err.sqlMessage
+     
    });
  }
    
