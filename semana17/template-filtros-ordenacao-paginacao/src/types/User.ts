@@ -8,5 +8,13 @@ export type User = {
 export type inputData = {
    name:string,
    orderBy:string,
-   orderType: string
+   orderType: string,
+  
+}
+
+export type input = {
+   name:string,
+   orderBy:string,
+   orderType: string,
+   page:number
 }

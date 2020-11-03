@@ -6,6 +6,7 @@ import { AddressInfo } from "net";
 import { getAllUsers } from "./endpoints/getAllUsers";
 import { getTypeUser } from "./endpoints/getTypeUser";
 import { getOrderUser } from "./endpoints/getOrderUser";
+import { getUser } from "./endpoints/getUser";
 
 
 dotenv.config();
@@ -28,6 +29,7 @@ app.use(cors())
 app.get("/user/all",getAllUsers);
 app.get("/user/:type",getTypeUser)
 app.get("/user", getOrderUser)
+app.get("/user",getUser)
 
 const server = app.listen(process.env.PORT || 3003, () => {
    if (server) {

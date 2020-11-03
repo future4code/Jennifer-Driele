@@ -1,6 +1,6 @@
 export type Recipe = {
    id: string,
-   title: string,
+   name: string,
    description: string,
    userId: string,
    createdAt: Date,
