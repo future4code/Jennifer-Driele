@@ -10,3 +10,17 @@ b-)CREATE TABLE ListUser (
     nickname VARCHAR(255) UNIQUE NOT NULL, 
     email VARCHAR(255) UNIQUE NOT NULL
 );
+
+* CREATE TABLE to_do_list_users(
+	id VARCHAR(255) PRIMARY KEY, 
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password   VARCHAR(255)  NOT NULL
+);
+
+
+### EXERCÍCIO 3
+a-) representa a chave que será usada como base para gerar o token
+
+
+
+

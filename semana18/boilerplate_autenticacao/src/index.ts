@@ -5,6 +5,8 @@ import dotenv from "dotenv";
 import { AddressInfo } from "net";
 import createUser from "./endpoints/createUser";
 import { createUserSignup } from "./endpoints/createUserSignup";
+import { login } from "./endpoints/login";
+import { getUserById } from "./endpoints/getUserById";
 
 
 dotenv.config();
@@ -26,8 +28,10 @@ const app = express();
 app.use(express.json());
 app.use(cors())
 
-app.post('/user', createUser);
-app.post ('user/signup', createUserSignup);
+app.post('/user/create', createUser);
+app.post('/user/signup', createUserSignup);
+app.post('/user/login',login );
+app.get('/user/:id', getUserById)
 
 
 
