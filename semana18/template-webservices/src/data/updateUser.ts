@@ -1,4 +1,4 @@
-import { connection } from "..";
+import { connection } from "../index";
 
 export default async function updateUser(
    id: string,
@@ -7,7 +7,7 @@ export default async function updateUser(
    email?: string
 ) {
 
-   await connection("to_do_list_users")
+   await connection("ListUser")
       .update({
          name, nickname, email
       })

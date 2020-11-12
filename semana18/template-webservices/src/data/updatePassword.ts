@@ -1,6 +1,6 @@
-import { connection } from "..";
+import { connection } from "../index";
 
-const TABLE_NAME = "to_do_list_users"
+const TABLE_NAME = "ListUser"
 
 export async function updatePassword(id: string,
      newPassword: string){

@@ -25,7 +25,7 @@ export async function resetPassword(req: Request, res: Response){
         await updatePassword(user.id, hashPassword);
 
         await writeEmail(
-            "João Alves <joao@labenu.com>",
+            "Jennifer Silva <jennifer@labenu.com>",
             user.email,
             "Salve!",
             `Oi, ${user.name}, tudo susse?`,

@@ -1,4 +1,4 @@
-import { connection } from ".."
+import { connection } from "../index"
 import { USER_ROLES } from "./insertUser"
 
 export type User = {
@@ -14,7 +14,7 @@ export default async function selectUserByEmail(
    email: string
 ): Promise<User> {
    try {
-      const result = await connection("to_do_list_users")
+      const result = await connection("ListUser")
          .select("*")
          .where({ email })
 
