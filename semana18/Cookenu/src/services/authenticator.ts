@@ -3,6 +3,7 @@ import * as jwt from "jsonwebtoken"
 
 export type AuthenticationData = {
     id: string,
+    
  }
  
  export function generateToken(

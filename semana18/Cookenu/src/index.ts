@@ -6,7 +6,10 @@ import createUser from './endpoints/createUser'
 import login from './endpoints/login'
 import getUserById from './endpoints/getUserById'
 import getUserProfile from './endpoints/getUserProfile'
-
+import createRecipe from './endpoints/createRecipe'
+import getRecipeById from './endpoints/getRecipeById'
+import getFollowUser from './endpoints/getFollowUser'
+import getUnfollowUser from './endpoints/getUnfollowUser'
 
 dotenv.config()
 
@@ -26,10 +29,15 @@ app.use(express.json())
 app.use(cors())
 
 
-app.post("/user", createUser)
+app.post("/user/signup", createUser)
 app.post("/user/login", login)
 app.get("/user/profile",getUserProfile)
+app.post("/user/follow", getFollowUser)
+app.post("/user/unfollow",getUnfollowUser)
 app.get("/user/:id", getUserById)
+
+app.post("/recipe/create",createRecipe)
+app.get("/recipe/:id", getRecipeById)
 
 
 app.listen(3003, () => {

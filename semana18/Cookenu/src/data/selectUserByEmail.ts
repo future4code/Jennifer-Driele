@@ -6,7 +6,7 @@ export default async function selectUserByEmail(
     email: string
  ): Promise<User> {
     try {
-       const result = await connection("table_user")
+       const result = await connection("cookenu_user")
           .select("*")
           .where({ email })
  

@@ -11,5 +11,5 @@ export default async function insertUser(
         email,
         password
        
-    }).into('table_user')
+    }).into('cookenu_user')
 }
