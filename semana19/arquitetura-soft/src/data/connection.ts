@@ -1,4 +1,6 @@
-import knex from 'knex';
+//não está funcionando tivi que colocar no index para funcionar
+
+// import knex from 'knex';
 
 // export const connection = knex({
 //     client: 'mysql',

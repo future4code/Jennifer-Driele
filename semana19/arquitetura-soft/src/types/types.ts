@@ -1,4 +1,12 @@
 export enum USER_ROLES {
     NORMAL = 'NORMAL',
-    ADMIN = 'ADMIN'
+    ADMIN = 'ADMIN',
+}
+
+export type User = {
+    id: string,
+    name: string,
+    email: string,
+    password: string,
+    role: USER_ROLES
 }

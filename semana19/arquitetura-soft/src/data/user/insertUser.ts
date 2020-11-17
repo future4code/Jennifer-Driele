@@ -1,8 +1,6 @@
 import { connection } from "../..";
 import { USER_ROLES } from "../../types/types";
 
-
-
 export default async function insertUser(
     id: string,
     name: string,
@@ -10,9 +8,7 @@ export default async function insertUser(
     password: string,
     role: USER_ROLES
 ) {
-
     try{
-
         await connection.insert({
             id,
             name,

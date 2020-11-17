@@ -13,7 +13,14 @@ export const createUserBusiness =  async (input: any): Promise<string>=>{
             !input.password ||
             !input.role
         ) {
-          throw new Error('Preencha os campos "name","nickname", "email" e "password"')
+          throw new Error('Preencha os campos "name", "email", "password e "role"')
+        }
+        if(input.email.indexOf("@") === -1){
+            throw new Error("Invalid Email");
+        }
+
+        if(input.password.length < 6){
+            throw new Error("Password must have at least 6 characters");
         }
     
         const id: string = generateId()

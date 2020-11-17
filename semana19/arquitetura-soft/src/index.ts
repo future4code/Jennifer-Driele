@@ -3,6 +3,9 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import knex from 'knex';
 import { createUser } from './controller/user/createUser'
+import login from './controller/user/login';
+import { deleteUserId } from './controller/user/deleteUserId';
+import getAllUsers from './controller/user/getAllUsers';
 //import { connection } from './data/connection'
 
 
@@ -30,6 +33,9 @@ app.use(cors())
 // })
 
 app.post("/user/signup", createUser)
+app.post("/user/login", login)
+app.get("/user/all",getAllUsers)
+app.delete("/user/delete/:id", deleteUserId)
 
 app.listen(3003, () => {
    console.log('Servidor rodando na porta 3003')
