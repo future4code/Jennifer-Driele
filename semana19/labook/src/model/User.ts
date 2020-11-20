@@ -1,5 +1,5 @@
 export interface CreateUserInput {
-   name: string
+   name: string,
    email: string,
    password: string,
   
@@ -40,4 +40,12 @@ export function numberToBoolean(value: number): boolean {
    return false;
 }
 
+
+export interface getUserIdInput{
+   id:string
+}
  
+export interface AddFriend {
+   id:string,
+   token: string
+}

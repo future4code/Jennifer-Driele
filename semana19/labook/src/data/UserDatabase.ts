@@ -1,3 +1,4 @@
+import { CustomError } from "../errors/CustomError";
 import { User } from "../model/User";
 import BaseDatabase from "./BaseDatabase";
 
@@ -5,6 +6,7 @@ class UserDatabase extends BaseDatabase {
 
 
    private static tableName: string = "labook_users"
+   private static tableFriends: string ="labook_friends"
 
    public getTableName = (): string => UserDatabase.tableName
 
@@ -46,6 +48,35 @@ class UserDatabase extends BaseDatabase {
          throw new Error(error.slqMessage || error.message)
       }
    }
+
+   public async getUserById(
+      id:string
+   ):Promise<any> {
+      try{
+         const input:any = await BaseDatabase.connection
+             .select("*")
+             .where({id})
+             .from(UserDatabase.tableName)
+             
+             if(!input){
+                throw new CustomError(400," Invalid Credentials")
+             }
+      }catch(error){ 
+      throw new Error("Database error:, + error.slqMessage")
+   }
 }
 
+public async addFriendById(
+   friend1:string,
+   friend2:string
+): Promise<any>{
+   await BaseDatabase.connection.insert({
+         "friend1":friend1,
+         "friend2":friend2
+      })
+      .into(UserDatabase .tableFriends)
+   }
+
+  
+}
 export default new UserDatabase()

@@ -1,55 +1,68 @@
-import { Request, Response } from "express";
 import PostDatabase from "../data/PostDatabase";
-import { CreatePostInput,Post } from "../model/Post";
+import { CreatePostById, CreatePostInput,Post } from "../model/Post";
 import authenticator, { AuthenticationData } from "../services/authenticator";
 import idGenerator from "../services/idGenerator";
+import moment from "moment";
+import { CustomError } from "../errors/CustomError";
 
 
 class PostBusiness {
-    public async createPost(input: CreatePostInput): Promise<string> {
+    public async createPost(input: CreatePostInput):Promise<string> {
         let message= "Success!"
        try {
-        const { photo, description,type } =input
-
-        if (!input.photo || !input.description || !input.type ) {
-         throw new Error('"photo", "description"and "type",  must be provided')
+        if (
+             !input.photo ||
+             !input.description || 
+             !input.type 
+             ) {
+         throw new CustomError(406,'"photo", "description"and "type",  must be provided')
         }
-        const tokenData: AuthenticationData =authenticator. getTokenData(input)
-        const author_id: string tokenData.id
-         const id: string =idGenerator. generateId()
-         
-         if(!tokenData){
-           message = "Unauthorized";
-           throw new Error("message")
-         }
-         const createdATS = moment().format("YYYY-MM-DD")
-         const newPost:Post = new Post(
+        
+        const tokenData: AuthenticationData = authenticator. getTokenData(input.token)
+        
+        if(!tokenData){
+            message="Unauthorized"
+        }
+        const createdATMoment = moment().format("YYYY-MM-DD")
+        const id: string =idGenerator. generateId()
+        const newPost : Post = new Post(
             id,
             input.photo,
             input.description,
             input.type,
-            createdATS,
-            author_id
+            new Date(createdATMoment),
+            tokenData.id
        )
        await PostDatabase.createPost(newPost)
        return message
+
          }catch(error){
             let message = error.sqlMessage || error.message
             return message
-
-         }
-        
-    )
-    const token :string = generateToken({
-        id:req.body.id
-     });
-
-    
-
-    }catch(error){
-        if(error.code === 1048){
-            throw new Error("This Post already exist!");
         }
     }
-   
+
+    public async getPostById(input:CreatePostById ): Promise<any>{
+        let message="sucess"
+         try{
+             if(
+                 !input.id
+                 ){
+                     message=""
+                 }
+                 const id = input.id
+                 const token:string =authenticator. generateToken({id}) as string
+                 const tokenData: AuthenticationData = authenticator. getTokenData(token)
+                 if(
+                     !tokenData
+                 ){
+                     message
+                 }
+         } catch(error){
+            let message = error.sqlMessage || error.message
+            return message
+        }
+    }
 }
+
+export default new PostBusiness()

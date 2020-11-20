@@ -1,41 +1,49 @@
-import { POST_TYPES } from "../model/Post";
+import { Post } from "../model/Post";
 import BaseDatabase from "./BaseDatabase";
 
 
 class PostDatabase extends BaseDatabase{
 
-    private  tableName: string = "labook_posts" 
+    private static tableName: string = "labook_posts" 
+    public geTableName =():string => PostDatabase.tableName
 
     public async getPostById(
         id:string
+       
     ):Promise<any>{
-        const result = await BaseDatabase.connection.raw(`
-          SELECT *,FROM ${this.tableName} 
-          WHERE id = '${id}';
-        `)
-        return result[0][0]
+        const result = await BaseDatabase.connection(PostDatabase.tableName)
+        .select("*")
+        .where({ id })
+        
+        return result[0]
     }
     
-    public createPost = async(
-    id: string,
-    photo: string,
-    description: string,
-    type: POST_TYPES,
-    created_at: Date,
-    author_id: string
+    public async createPost(
+        post:Post
+    ){
+        try{
+            await BaseDatabase. connection.insert({
+                id:post.getId(),
+                photo: post.getPhoto(),
+                description: post.getDescription(),
+                type: post.getType(),
+                created_at: post.getCreatedAt(),
+                author_id: post.getAuthorId()
+            })
+            .into(PostDatabase.tableName)
+        }catch (error) {
+            throw new Error("Erro de banco de dados: " + error.sqlMessage);
+         }
+    }
 
-    
-)=> {
-        await BaseDatabase. connection(this.tableName)
-        .insert({
-            id,
-            photo,
-            description,
-            type,
-            created_at,
-            author_id
-        })
-   
-}
+    public async selectFeedPost():Promise<any> {
+        const result: Post[] = await BaseDatabase.connection.raw(`
+           SELECT id, name,
+           FROM tablePost
+           
+        `)
+     
+        return result[0]
+  }
 }
 export default new PostDatabase() 

@@ -1,9 +1,10 @@
 import userDatabase from "../data/UserDatabase";
-import { CreateUserInput, User, CreateUserOutput } from "../model/User";
+import { CreateUserInput, User, CreateUserOutput,AddFriend  } from "../model/User";
 import { CustomError } from "../errors/CustomError";
-import authenticator from "../services/authenticator";
+import authenticator, { AuthenticationData } from "../services/authenticator";
 import hashManager from "../services/hashManager";
 import idGenerator from "../services/idGenerator";
+import UserDatabase from "../data/UserDatabase";
 
 class UserBusiness {
    public async signup(input: CreateUserInput): Promise<string> {
@@ -49,6 +50,28 @@ class UserBusiness {
          throw new CustomError(400, error.sqlMessage || error.message);
       }
 
+   }
+
+
+   public async addFriendById(
+      input:AddFriend
+   ):Promise<string>{
+      try{
+         if(!input.id){
+            throw new CustomError(406,"'id' must be provided")
+         }
+         const tokenData:AuthenticationData = authenticator.getTokenData(input.token)
+         const friend1:string = tokenData.id !
+         const friend2 = input.id
+
+         const friends = await UserDatabase.addFriendById(
+            friend1,
+            friend2
+         )
+         return friends
+      }catch (error){
+         throw new CustomError(400, error.message)
+      }
    }
 }
 

@@ -1,5 +1,7 @@
-// import express from "express"
-// import  createPost  from "../controller/post/createPost";
-// export const postRouter = express.Router();
+ import express from "express"
+import PostController from "../controller/PostController";
 
-// postRouter.put("/create", createPost);
+export const postRouter = express.Router();
+
+postRouter.post("/create", PostController.createPost);
+postRouter.get("/:id", PostController.getPostById);

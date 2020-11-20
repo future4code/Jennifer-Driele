@@ -1,7 +1,8 @@
 import { Request, Response } from "express"
+import UserBusiness from "../business/UserBusiness"
 import userBusiness from "../business/UserBusiness"
 import userDatabase from "../data/UserDatabase"
-import { CreateUserInput, User } from "../model/User"
+import { AddFriend, CreateUserInput, User } from "../model/User"
 import authenticator from "../services/authenticator"
 import hashManager from "../services/hashManager"
 
@@ -92,7 +93,29 @@ class UserController {
          }
          res.send({message})
       }
-   }   
+   }
+   
+   public async addFriendById(
+      req:Request,
+      res:Response
+   ):Promise<any>{
+      try{
+         const input:AddFriend ={
+            id:req.params.id,
+            token:req.headers.authorization !
+         }
+         const friends = await UserBusiness.addFriendById(input)
+
+         res.status(200).send({
+            message:"Friend add",friends
+         })
+   
+      }catch (error){
+         res.status(400).send({
+            message:error.message
+         })
+      }
+   }
 }
 
 export default new UserController()

@@ -4,7 +4,6 @@ export enum POST_TYPES {
  }
  
  export interface CreatePostInput  {
-    id: string,
     photo: string,
     description: string,
     type: string,
@@ -17,8 +16,9 @@ export enum POST_TYPES {
       private photo: string,
       private description: string,
       private type: string,
-      private createdAt: Date = new Date(),
-      private authorId: string
+      private created_at: Date = new Date(),
+      private author_id: string,
+     
 
    ){ }
 
@@ -26,14 +26,15 @@ export enum POST_TYPES {
    public getPhoto = () :string => this.photo
    public getDescription = ():string => this.description
    public getType = ():string => this.type
-   public getCreatedAt= (): Date => this.createdAt
-   public getauthorId = () :string=> this.authorId
+   public getCreatedAt= (): Date => this.created_at
+   public getAuthorId = () :string=> this.author_id
+   
 
    public setPost(newPost: string){
       this.photo = newPost
       return this
    }
-}
+
    public setType(type:POST_TYPES){
       this.type = type
       return this
@@ -53,7 +54,13 @@ export enum POST_TYPES {
    token: string
 }
 
-export interface CreatePostOutputInterface {
-   token: string
+export interface CreatePostById {
+  id:string
 }
 
+export function postTypeToString(type:POST_TYPES): string {
+   if (type === "NORMAL") {
+      return "NORMAL";
+   }
+   return "EVENT";
+}
