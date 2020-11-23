@@ -1,5 +1,5 @@
 import PostDatabase from "../data/PostDatabase";
-import { CreatePostById, CreatePostInput,Post } from "../model/Post";
+import { CreatePostById, CreatePostInput,GetFeedByTypeInputDTO,GetFeedInputDTO,Post } from "../model/Post";
 import authenticator, { AuthenticationData } from "../services/authenticator";
 import idGenerator from "../services/idGenerator";
 import moment from "moment";
@@ -62,6 +62,19 @@ class PostBusiness {
             let message = error.sqlMessage || error.message
             return message
         }
+    }
+
+    public async getFriendsFeed(input: GetFeedInputDTO): Promise<Post[]>{
+
+       
+        return await PostDatabase.getFriendsFeed(input.friend1);
+
+    }
+
+    public async getFeedByType(input: GetFeedByTypeInputDTO): Promise<Post[]>{
+
+       
+        return await PostDatabase.getFeedByType(input.type);
     }
 }
 

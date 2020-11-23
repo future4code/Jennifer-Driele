@@ -14,4 +14,19 @@ export default class BaseDatabase{
       port: 3306
    }
 })
+
+public static async destroyConnection(): Promise<void>{
+   if(BaseDatabase.connection){
+       await BaseDatabase.connection.destroy();
+       BaseDatabase.connection ()
+   }
+}
+
+protected convertIntToBoolean(value: number): boolean{
+   return value === 1;
+}
+
+protected convertBooleanToInt(value: boolean): number{
+   return value? 1: 0;
+}
 }

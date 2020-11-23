@@ -1,5 +1,5 @@
 import userDatabase from "../data/UserDatabase";
-import { CreateUserInput, User, CreateUserOutput,AddFriend  } from "../model/User";
+import { CreateUserInput, User, CreateUserOutput,AddFriend, InputFriend  } from "../model/User";
 import { CustomError } from "../errors/CustomError";
 import authenticator, { AuthenticationData } from "../services/authenticator";
 import hashManager from "../services/hashManager";
@@ -73,6 +73,18 @@ class UserBusiness {
          throw new CustomError(400, error.message)
       }
    }
+
+
+   public async unfriend(input: InputFriend){
+
+      //const userDatabase = new UserDatabase();
+      const isFriend = await UserDatabase.checkFriendship(input.friend1, input.friend2);
+      if(isFriend){
+          await UserDatabase.unfriend(input.friend1, input.friend2);
+      }else{
+          throw new Error("Friendship doesn't exist");
+      }
+  }
 }
 
 export default new UserBusiness()

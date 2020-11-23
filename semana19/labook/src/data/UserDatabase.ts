@@ -77,6 +77,51 @@ public async addFriendById(
       .into(UserDatabase .tableFriends)
    }
 
+
+   public async unfriend(
+      friend1: string, 
+      friend2: string
+      ): Promise<void> {
+
+      try {
+          await BaseDatabase.connection.insert(`
+          DELETE FROM ${UserDatabase.tableFriends}
+          WHERE
+          (id_requester = "${friend1}" AND id_responder = "${friend2}")
+          OR
+          (id_requester = "${friend2}" AND id_responder = "${friend1}");
+          `);
+
+      } catch (error) {
+          throw new Error(error.sqlMessage || error.message);
+      }
+  }  
+
+  public async checkFriendship(
+     friend1: string, 
+     friend2: string
+   ): Promise<boolean>{
+   try {
+      const result = await BaseDatabase.connection(`
+       SELECT * FROM ${UserDatabase.tableFriends}
+       WHERE
+       (id_requester = "${friend1}" AND id_responder = "${friend2}")
+       OR
+       (id_requester = "${friend2}" AND id_responder = "${friend1}");
+       `);
+
+       if(result[0][0]){
+           return true;
+       }
+
+       return false;
+
+   } catch (error) {
+       throw new Error(error.sqlMessage || error.message);
+   }   
+}
+  
+
   
 }
 export default new UserDatabase()

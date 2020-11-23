@@ -1,4 +1,4 @@
-import { Post } from "../model/Post";
+import { Post, POST_TYPES } from "../model/Post";
 import BaseDatabase from "./BaseDatabase";
 
 
@@ -36,14 +36,58 @@ class PostDatabase extends BaseDatabase{
          }
     }
 
-    public async selectFeedPost():Promise<any> {
-        const result: Post[] = await BaseDatabase.connection.raw(`
-           SELECT id, name,
-           FROM tablePost
-           
-        `)
-     
-        return result[0]
-  }
+    public async getFriendsFeed(friend1: string): Promise<Post[]>{
+
+        try {
+            const postArray: Post[] = [];
+
+            const result = await BaseDatabase.connection
+            (`
+            SELECT p.* FROM ${PostDatabase.tableName} p
+            JOIN Lbk_Friends f
+            ON p.user_id = f.id_responder
+            WHERE f.id_requester = "${friend1}"
+            ORDER BY p.creation_date DESC;
+            `)
+
+            for(let post of result[0]) {
+                postArray.push(Post.toPostModel(post));
+            }
+
+            return postArray;
+            
+        } catch (error) {
+            throw new Error(error.sqlMessage || error.message);   
+        }
+
+    }
+
+    public async getFeedByType(type: POST_TYPES): Promise<Post[]>{
+
+        try {
+            const postArray: Post[] = [];
+
+            const result = await BaseDatabase.connection
+            (`
+            SELECT p.* FROM ${PostDatabase.tableName}p
+            WHERE type = "${type}"
+            ORDER BY p.creation_date DESC;
+            `)
+
+            for(let post of result[0]) {
+                postArray.push(Post.toPostModel(post));
+            }
+
+            return postArray;
+            
+        } catch (error) {
+            throw new Error(error.sqlMessage || error.message);   
+        }
+
+    }
+
+
+
+   
 }
 export default new PostDatabase() 

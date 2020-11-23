@@ -2,9 +2,11 @@ import { Request, Response } from "express"
 import UserBusiness from "../business/UserBusiness"
 import userBusiness from "../business/UserBusiness"
 import userDatabase from "../data/UserDatabase"
-import { AddFriend, CreateUserInput, User } from "../model/User"
-import authenticator from "../services/authenticator"
+import { AddFriend, CreateUserInput, InputFriend, User } from "../model/User"
+import authenticator, { AuthenticationData } from "../services/authenticator"
 import hashManager from "../services/hashManager"
+import  BaseDatabase  from "../data/BaseDatabase";
+
 
 class UserController {
    public async signup(
@@ -116,6 +118,31 @@ class UserController {
          })
       }
    }
-}
+
+   public async unfriend(req: Request, res: Response){
+
+      try{
+          const token = req.headers.authorization!;
+          const tokenData:AuthenticationData = authenticator.getTokenData(token)
+          
+
+          const input: InputFriend = {
+              friend1: tokenData.id,
+              friend2: req.body.id
+          }
+
+   
+          await UserBusiness.unfriend(input);
+
+          res.status(200).send({message: "You are no longer friends :("});
+
+
+      }catch(error){
+          res.status(400).send({error: error.message});
+      }
+
+      await BaseDatabase.destroyConnection();
+   }
+  }
 
 export default new UserController()

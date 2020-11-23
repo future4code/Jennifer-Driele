@@ -4,4 +4,5 @@ import PostController from "../controller/PostController";
 export const postRouter = express.Router();
 
 postRouter.post("/create", PostController.createPost);
-postRouter.get("/:id", PostController.getPostById);
+postRouter.get("feed/", PostController.getFriendsFeed);
+postRouter.get("/feed/all", PostController.getFeedByType);

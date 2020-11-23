@@ -40,6 +40,20 @@ export enum POST_TYPES {
       return this
    }
 
+   static toPostModel(object: any){
+      return new Post(object.id, object.image, object.description, object.creation_date, object.type, object.user_id);
+  }
+
+  static postTypeToString(value:string){
+   switch(value){
+      case "Event":
+         return POST_TYPES.EVENT
+      default:
+          return POST_TYPES.NORMAL
+  }
+}
+}
+
    // if(type.toLowerCase()=== POST_TYPES.NORMAL){
    //    this.type =POST_TYPES.NORMAL;
    // }else if(type.toLowerCase()=== POST_TYPES.EVENT){
@@ -49,7 +63,7 @@ export enum POST_TYPES {
    // }
 
    
-   }
+   
  export type CreatePostOutput = {
    token: string
 }
@@ -58,9 +72,12 @@ export interface CreatePostById {
   id:string
 }
 
-export function postTypeToString(type:POST_TYPES): string {
-   if (type === "NORMAL") {
-      return "NORMAL";
-   }
-   return "EVENT";
+
+
+export interface GetFeedInputDTO{
+   friend1: string
+}
+
+export interface GetFeedByTypeInputDTO{
+   type: POST_TYPES;
 }

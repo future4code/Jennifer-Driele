@@ -49,3 +49,9 @@ export interface AddFriend {
    id:string,
    token: string
 }
+
+export interface InputFriend{
+   friend1:string,
+   friend2:string,
+}
+
