@@ -1,24 +1,30 @@
+//import { BaseDatabase } from "../src/data/BaseDatabase"
 import { BaseDatabase } from "../src/data/BaseDatabase"
-import UserDatabase from "../src/data/UserDatabase"
-import {  User, validateEmptyProperties, ValidateEmptyPropertiesOutput } from "../src/validateEmptyProperties"
+import userDatabase from "../src/data/UserDatabase"
+//import {  User, validateEmptyProperties, ValidateEmptyPropertiesOutput } from "../src/validateEmptyProperties"
 
 
 
-describe("valideta empty properties", () =>{
+describe("Create User",() =>{
+    test ("Success case", async() =>{
+        expect.assertions(2)
+        try{
+            await userDatabase.createUser(
+                "124587",
+                "Jennifer",
+                300
+            )
+        const user:any = await userDatabase.getUserById("124587")
+          expect(user.name).toEqual("Jennifer")
+          expect(user.balance).toBe(100)
+        }catch (error){
 
-    test("Testing balance greater than value", () => {
-        const user: User = {
-            name: "Astrodev",
-            balance: 100
         }
-    
-        const result :ValidateEmptyPropertiesOutput= validateEmptyProperties(
-            50
-        )
-        
-        expect(result).toEqual({
-            
-            balance: 50
-        })
     })
 })
+
+// afterAll(async () => {
+//     await userDatabase.deleteUser("123456")
+//     await BaseDatabase.destroyConnection()
+//  })
+

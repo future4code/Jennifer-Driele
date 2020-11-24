@@ -2,11 +2,11 @@ export const validateEmptyProperties = (
     input: any
   ): ValidateEmptyPropertiesOutput => {
     let errors: User[] = [];
-    for (const name in input) {
-      if (input[name] !== false && !input[name]) {
+    for (const key in input) {
+      if (input[key] !== false && !input[key]) {
         errors.push({
-          name,
-          balance: input[name],
+          key,
+          value: input[key],
         });
       }
     }
@@ -25,6 +25,6 @@ export const validateEmptyProperties = (
   }
   
  export type User = {
-    name: string;
-    balance: number;
+   key: string;
+    value: number;
   }
