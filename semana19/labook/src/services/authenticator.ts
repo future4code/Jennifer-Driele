@@ -2,10 +2,11 @@ import * as jwt from "jsonwebtoken"
 
 export type AuthenticationData = {
    id: string,
+
   
 }
-
-export function generateToken(
+class Authenticator{
+   public generateToken(
    payload: AuthenticationData
 ): string {
    return jwt.sign(
@@ -15,13 +16,20 @@ export function generateToken(
          expiresIn: "24min"
       }
    )
-}
-
-export function getTokenData(
+   }
+   
+   public getTokenData(
    token: string
 ): AuthenticationData {
-   return jwt.verify(
+   const result = jwt.verify(
       token,
       process.env.JWT_KEY as string
    ) as AuthenticationData
+
+   return {
+      id: result.id,
+      
+   }
 }
+}
+export default new Authenticator()
