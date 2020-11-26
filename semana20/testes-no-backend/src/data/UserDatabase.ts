@@ -46,6 +46,8 @@ export class UserDatabase extends BaseDataBase {
       }
    }
 
+   
+
    public async getUserById(id: string): Promise<User | undefined> {
       try {
          const result = await BaseDataBase.connection.raw(`

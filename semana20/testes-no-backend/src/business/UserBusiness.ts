@@ -90,24 +90,22 @@ export class UserBusiness {
       }
    }
 
-   public async getUserById(id: string) {
+   public async getUserById(id: string ) {
 
-     
       const user = await userDatabase.getUserById(id);
-     
-  
-      if (!user) {
-        throw new Error("User not found");
+       if (!user) {
+        throw new CustomError(401,"User not found");
       }
   
-      const accessToken = tokenGenerator.generate({
-        id: user.getId(),
-        name: user.getName(),
-        email: user.getEmail(),
-        role: user.getRole(),
-      })
-      return { accessToken };
-      
+     return{ 
+         id: user.getId(),
+         name: user.getName(),
+         email: user.getEmail(),
+         role: user.getRole(),
+
+      }
+     
+     
    
    }
 

@@ -36,7 +36,7 @@ export class UserController {
 
    public async getUserById(req:Request,res:Response) {
       try{
-         const result = await userBusiness.getUserById(req.params.id)
+         const result = await  userBusiness.getUserById(req.params.id)
          if (!result) {
                        throw new Error("Usuario não encontrado")
                     }
