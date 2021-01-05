@@ -1,4 +1,4 @@
-export const findNegativeNumbersInMatrix = (m: number[][]): number => {
+const findNegativeNumbersInMatrix = (m: number[][]): number => {
     let count = 0;
     let row = 0;
     let column = m[0].length - 1;
@@ -12,3 +12,4 @@ export const findNegativeNumbersInMatrix = (m: number[][]): number => {
     }
     return count;
   };
+  console.log(findNegativeNumbersInMatrix)

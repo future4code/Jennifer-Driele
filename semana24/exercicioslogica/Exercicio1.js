@@ -1,19 +1,19 @@
-// interface HashOneEdit{
-//     [index: string]: number | boolean
-// }
-var isOneEdit = function (strA, strB) {
+const isOneEdit = (strA, strB) => {
     // Se a diferença de tamanho entre as duas é maior que 1, não é oneEdit
-    if (Math.abs(strB.length - strA.length) > 1)
+    if (Math.abs(strB.length - strA.length) > 1) {
         return false;
+    }
     // Se uma é maior que a outra, a maior obrigatoriamente deve incluir a outra
-    if (strA.length > strB.length)
+    if (strA.length > strB.length) {
         return strA.includes(strB);
-    if (strB.length < strA.length)
+    }
+    if (strB.length > strA.length) {
         return strB.includes(strA);
+    }
     // Passando pelos ifs acima, significa que as duas têm o mesmo tamanho
     // Nesse caso, varremos as strings contando quantas letras diferentes tem
-    var charsDiffCount = 0;
-    for (var i = 0; i < strA.length; i++) {
+    let charsDiffCount = 0;
+    for (let i = 0; i < strA.length; i++) {
         if (strA[i] !== strB[i])
             charsDiffCount++;
     }
@@ -21,3 +21,6 @@ var isOneEdit = function (strA, strB) {
     return charsDiffCount === 1;
 };
 console.log(isOneEdit("banan", "banana"));
+console.log(isOneEdit("bananak", "banana"));
+console.log(isOneEdit("panana", "banana"));
+console.log(isOneEdit("bananaaaa", "banana"));

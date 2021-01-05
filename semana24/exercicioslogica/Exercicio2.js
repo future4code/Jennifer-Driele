@@ -1,13 +1,9 @@
-"use strict";
-exports.__esModule = true;
-exports.stringCompression = void 0;
-exports.stringCompression = function (input) {
-    var substrings = [];
-    var lastChar = input[0];
-    var charCount = 0;
-    for (var _i = 0, lastChar_1 = lastChar; _i < lastChar_1.length; _i++) {
-        var char = lastChar_1[_i];
-        if (lastChar[char]) {
+const stringCompression = (input) => {
+    const substrings = [];
+    let lastChar = input[0];
+    let charCount = 0;
+    for (let char of input) {
+        if (char !== lastChar) {
             substrings.push(lastChar + charCount);
             lastChar = char;
             charCount = 0;
@@ -15,11 +11,14 @@ exports.stringCompression = function (input) {
         charCount++;
     }
     substrings.push(lastChar + charCount);
-    var result = "";
-    for (var _a = 0, substrings_1 = substrings; _a < substrings_1.length; _a++) {
-        var key = substrings_1[_a];
+    let result = "";
+    for (const key of substrings) {
         result += key;
     }
     return result.length > input.length ? input : result;
 };
-console.log(exports.stringCompression(" aabbb"));
+// console.log(stringCompression(" aabbb"));
+// console.log(stringCompression(" aabccccaaa"));
+// console.log(stringCompression(" accurate"));
+// console.log(stringCompression(" escola"));
+// console.log(stringCompression(" accuraaaaaaaaaaaaate"));

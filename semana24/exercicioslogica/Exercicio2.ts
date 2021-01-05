@@ -1,9 +1,9 @@
-export const stringCompression = (input: string): string  => {
+const stringCompression = (input: string): string => {
     const substrings: string[] = [];
-    let lastChar  = input[0];
+    let lastChar  = input[0] ;
     let charCount = 0;
   
-    for (const char of input) {
+    for (let char of input) {
       if (char !== lastChar) {
         substrings.push(lastChar + charCount);
         lastChar = char;
@@ -11,6 +11,7 @@ export const stringCompression = (input: string): string  => {
       }
       charCount++;
     }
+   
   
     substrings.push(lastChar + charCount);
     let result = "";
@@ -21,3 +22,7 @@ export const stringCompression = (input: string): string  => {
     return result.length > input.length ? input : result;
   };
   console.log(stringCompression (" aabbb"))
+  console.log(stringCompression (" aabccccaaa"))
+  console.log(stringCompression (" accurate"))
+  console.log(stringCompression (" escola"))
+  console.log(stringCompression (" accuraaaaaaaaaaaaate"))

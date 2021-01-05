@@ -1,4 +1,4 @@
-export const replaceMatrixValue = (
+  export const replaceMatrixValue = (
     matrix: number[][],
     rowIndex: number,
     columnIndex: number,
@@ -13,3 +13,5 @@ export const replaceMatrixValue = (
   
     matrix[rowIndex][columnIndex] = value;
   };
+
+  console.log(replaceMatrixValue)
